@@ -1,11 +1,16 @@
 import "./styles/App.css";
+import Button from "./components/Button.jsx";
+
 
 function App() {
 
   return (
     <div>
-      Hello world :)
+      Hello world :) 
+      <br />
+      <Button/>
     </div>
+    
   );
 }
 
