@@ -1,0 +1,15 @@
+.card {
+  display: flex;
+  width: 400px;
+  height: 200px;
+  background-color: darkturquoise;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: 400;
+}
+
+.tittel {
+  /* height: fit-content; */
+  font-size: 26px;
+}
