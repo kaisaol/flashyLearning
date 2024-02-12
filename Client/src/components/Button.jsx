@@ -1,14 +1,15 @@
 import "../styles/Button.css";
 
-const Button = ({onClick, label, shape}) => {
+const Button = ({onClick, label, idName}) => {
 
     return(
 
         <button
             class = "defaultButton"
             onClick = {onClick}
+            id = {idName}
         >
-            Logg inn
+
             {label}
         </button>
 
