@@ -1,5 +1,6 @@
 import "./styles/App.css";
 import Button from "./components/Button.jsx";
+import Login from "./components/Login.jsx";
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       Hello world :) 
       <br />
       <Button/>
+      <Login/>
     </div>
     
   );
