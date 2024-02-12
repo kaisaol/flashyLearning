@@ -1,5 +1,6 @@
 import "./styles/App.css";
 import Button from "./components/Button.jsx";
+import SignUp from "./components/SignUp.jsx";
 
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <div>
       Hello world :) 
       <br />
-      <Button/>
+      <Button  />
+      <SignUp></SignUp>
     </div>
     
   );
