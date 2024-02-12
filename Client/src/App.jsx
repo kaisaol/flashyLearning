@@ -1,12 +1,12 @@
-import "./styles/App.css";
-import "./components/Flashcard.jsx"
-import Flashcard from "./components/Flashcard.jsx";
+import './styles/App.css';
+import Button from './components/Button.jsx';
 
 function App() {
-
   return (
-    <div className="App">
-        <Flashcard term={"Hvordan slayer man best mulig?"} definition={"Bånner en sekser og en flaske jäger"} />
+    <div>
+      Hello world :)
+      <br />
+      <Button />
     </div>
   );
 }
