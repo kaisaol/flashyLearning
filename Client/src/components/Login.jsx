@@ -6,17 +6,11 @@ import { useState } from "react";
 
 const Login = () => {
 
-    function User(userName, password){
-        this.userName = userName;
-        this.password = password;
-    }
-
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     function handleSetUsername(e){
         setUsername(e.target.value)
-
     }
 
     function handleSetPassword(e){
@@ -25,7 +19,8 @@ const Login = () => {
 
     function onLoginButtonAction(e){
         e.preventDefault();
-        const newUser = new User(username, password)
+        const newUser = {username: username, password: password}
+        console.log(newUser);
     }
 
     return(
