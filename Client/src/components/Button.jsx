@@ -5,7 +5,7 @@ const Button = ({onClick, label, idName}) => {
     return(
 
         <button
-            class = "defaultButton"
+            className = "defaultButton"
             onClick = {onClick}
             id = {idName}
         >
