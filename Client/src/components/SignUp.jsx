@@ -1,6 +1,6 @@
 import "../styles/SignUp.css";
 import Button from "./Button";
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 
 const SignUp = () => {
@@ -32,28 +32,32 @@ const handleSignUp = (event) => {
 
 
 return (
-
-    <form>
-        <h3>Sign Up!</h3>
-        <label htmlFor="userName">Brukernavn:</label><br />
-        <input
-            type="text" 
-            id = {"userName"} 
-            onChange = {handleUserChange} 
-            value = {username }
-         />
-         
-        <br />
-        <label htmlFor="password">Passord:</label><br />
-        <input
-            type="text" 
-            id = {"password"}
-            onChange = {handlePassChange} 
-            value = {password}/>
-        <br />
-        <Button onClick = {handleSignUp} label = {"Sign Up"} id = {"SignUpButton"}> </Button>
-        
-    </form>
+    <div className="form">
+      <form>
+          <h3 className="headerSignUp">Sign Up!</h3>
+          <div className="input">
+          <label htmlFor="userName">Brukernavn:</label><br />
+          <input
+                type="text" 
+                id = {"userName"} 
+                onChange = {handleUserChange} 
+                value = {username }
+            />
+            
+            <br />
+            <label htmlFor="password">Passord:</label><br />
+            <input
+                type="text" 
+                id = {"password"}
+                onChange = {handlePassChange} 
+                value = {password}/>
+            <br />
+          </div>
+          <div className="signUpButton">
+          <Button onClick = {handleSignUp} label = {"Sign Up"} id = {"SignUpButton"}> </Button>
+          </div>
+      </form>
+    </div>
 
 );
 
