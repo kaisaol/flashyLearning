@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Flashcard from './Flashcard'; 
-import '../styles/FlashcardSet.css'; 
+import Button from './Button';
+import Flashcard from './Flashcard';
+import '../styles/FlashcardSet.css';
 
 const flashcardsData = [
   { term: 'Term 1', definition: 'Definition 1' },
@@ -8,15 +9,19 @@ const flashcardsData = [
   { term: 'Term 3', definition: 'Definition 3' },
 ];
 
-const FlashcardSet = () => {
+const FlashcardSet = ({ set, onBack }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const flashcardsData = set.cards;
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % flashcardsData.length);
   };
 
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + flashcardsData.length) % flashcardsData.length);
+    setCurrentIndex(
+      (prevIndex) =>
+        (prevIndex - 1 + flashcardsData.length) % flashcardsData.length
+    );
   };
 
   return (
@@ -26,8 +31,8 @@ const FlashcardSet = () => {
         definition={flashcardsData[currentIndex].definition}
       />
       <div className="controls">
-        <button onClick={handlePrevious}>Previous</button>
-        <button onClick={handleNext}>Next</button>
+        <Button onClick={handlePrevious} label="Previous" idName="prevButton" />
+        <Button onClick={handleNext} label="Next" idName="nextButton" />
       </div>
     </div>
   );
