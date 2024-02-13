@@ -1,5 +1,6 @@
 import "../styles/SignUp.css";
 import Button from "./Button";
+import React, { useState } from 'react';
 
 
 const SignUp = () => {
@@ -9,22 +10,24 @@ function User(name, password){
     this.password = password;
 }
 
-handelSignUp = () => {
-    const newUser = new User(userData.userName, userData.password);
+
+const handleSignUp = (event) => {
+    event.preventDefault();
+    const newUser = new User(username, password);
+    console.log({newUser})
 }
 
-const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
+
+  const handleUserChange = (event) => {
+    setUserName(event.target.value);
   };
 
-  const [userData, setUserData] = useState({
-    userName: '',
-    password: '',
-  });
+  const handlePassChange = (event) => {
+    setPass(event.target.value);
+  };
+
+  const [username, setUserName] = useState('');
+  const [password, setPass] = useState('');
 
 
 
@@ -33,12 +36,22 @@ return (
     <form>
         <h3>Sign Up!</h3>
         <label htmlFor="userName">Brukernavn:</label><br />
-        <input type="text" id = "userName" onChange = {handleInputChange } value = {userData.userName}/>
+        <input
+            type="text" 
+            id = {"userName"} 
+            onChange = {handleUserChange} 
+            value = {username }
+         />
+         
         <br />
         <label htmlFor="password">Passord:</label><br />
-        <input type="text" id = "password" onChange = {handleInputChange} value = {userData.password}/>
+        <input
+            type="text" 
+            id = {"password"}
+            onChange = {handlePassChange} 
+            value = {password}/>
         <br />
-        <Button onClick = {handelSignUp} label = "Sign Up" id = "SignUpButton"> </Button>
+        <Button onClick = {handleSignUp} label = {"Sign Up"} id = {"SignUpButton"}> </Button>
         
     </form>
 
