@@ -13,8 +13,6 @@ export const getCountry = async (id) => {
 };
 */
 
-/*let IDs = ['1,2,3,4,5,6,7']*/
-
 export const getBruker = async (IDs) => {
   const [rows] = (await pool
         .promise()
@@ -80,7 +78,7 @@ export const getPopulereSet = async ()=> {
 export const addBruker = async (Data) => {
   await pool
   .promise()
-  .query("INSERT INTO Bruker (?)", [Data], function(err) {
+  .query("INSERT INTO Bruker VALUES (?)", [Data], function(err) {
     if(err) {
       console.log(err);
       }
@@ -101,7 +99,7 @@ export const addLikeSet = async (ID) => {
 export const addLikeBruker = async (IDs) => {
   await pool
   .promise()
-  .query("INSERT INTO FavorittSet (?)", [IDs])
+  .query("INSERT INTO FavorittSet VALUES (?)", [IDs])
 }
 
 export const addFlashcardSet = async (Data) => {
@@ -118,7 +116,7 @@ export const addFlashcardSet = async (Data) => {
 export const addKommnetar = async (Data) => {
   await pool
   .promise()
-  .query("INSERT INTO Kommnetar (?)", [Data], function(err) {
+  .query("INSERT INTO Kommnetar VALUES (?)", [Data], function(err) {
     if(err) {
       console.log(err);
       }
@@ -139,27 +137,10 @@ export const removeFavorittSet = async (ID) => {
 export const removeBruker = async (ID) => {
   await pool
   .promise()
-  const [data] = pool.query("SELECT * Favorittsett WHERE BrukerID = (?)", [ID], function(err,result){
-    if(err) {
-      console.log(err);
-      } else {
-      console.log(result);
-    }
-  })
   .query("DELETE FROM Bruker WHERE ID = (?)", [ID], function(err){
     if(err) {
       console.log(err);
       }
-  })
-  .query("DELETE FROM FavorittSet WHERE BrukerID = (?)", [ID], function(err){
-    if(err) {
-      console.log(err);
-      }
-  })
-  .query("UPDATE FlashcardSet Set Likes = Likes - 1 WHERE ID = (?)" , [data], function(err){
-    if(err) {
-      console.log(err);
-    }
   })
 }
 
