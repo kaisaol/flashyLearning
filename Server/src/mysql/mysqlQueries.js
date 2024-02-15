@@ -39,7 +39,7 @@ export const getFlashcardSet = async (IDs) => {
       return rows;
 }
 
-export const getKommnetar = async (IDs) => {
+export const getKommentar = async (IDs) => {
   const [rows] = (await pool
         .promise()
         .query("SELECT * FROM Kommentar WHERE ID in (?)", [IDs], function(err, result) {
@@ -113,7 +113,7 @@ export const addFlashcardSet = async (Data) => {
   )
 }
 
-export const addKommnetar = async (Data) => {
+export const addKommentar = async (Data) => {
   await pool
   .promise()
   .query("INSERT INTO Kommnetar VALUES (?)", [Data], function(err) {

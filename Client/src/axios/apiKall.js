@@ -1,12 +1,18 @@
 import axios from 'axios';
 
-export const getBruker = async (ID) => {
+/**
+ * 
+ * @param brukerID id of the user
+ * @returns a user with the given id from the database
+ */
+export const apiBrukerKall = async (brukerID) => {
     return await axios.get('http://localhost:3000/bruker', {
         params: {
-        ID: ID
+        ID: brukerID
         }
     }).then((data) => {
-        return data.data;
+        console.log(data);
+        return data.data[0];
     }).catch((error) => {
         console.log(error);
     });
