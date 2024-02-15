@@ -1,12 +1,15 @@
-import './styles/App.css';
-import Button from './components/Button.jsx';
+import "./styles/App.css";
+import Button from "./components/Button.jsx";
+import SignUp from "./components/SignUp.jsx";
+
 
 function App() {
   return (
     <div>
       Hello world :)
       <br />
-      <Button />
+      <Button  />
+      <SignUp></SignUp>
     </div>
   );
 }
