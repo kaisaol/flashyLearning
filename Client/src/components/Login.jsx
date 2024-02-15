@@ -13,6 +13,7 @@ const Login = () => {
         setUsername(e.target.value)
     }
 
+
     function handleSetPassword(e){
         setPassword(e.target.value)
     }
@@ -20,7 +21,7 @@ const Login = () => {
     function onLoginButtonAction(e){
         e.preventDefault();
         const newUser = {username: username, password: password}
-        console.log(newUser);
+       
     }
 
     return(
@@ -41,3 +42,5 @@ const Login = () => {
 
 }
 export default Login;
+
+
