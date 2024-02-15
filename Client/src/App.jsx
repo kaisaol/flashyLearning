@@ -4,15 +4,13 @@ import SignUp from "./components/SignUp.jsx";
 
 
 function App() {
-
   return (
     <div>
-      Hello world :) 
+      Hello world :)
       <br />
       <Button  />
       <SignUp></SignUp>
     </div>
-    
   );
 }
 
