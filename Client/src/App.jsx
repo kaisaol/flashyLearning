@@ -3,6 +3,10 @@
 import "./styles/App.css";
 import Button from "./components/Button.jsx";
 import SignUp from "./components/SignUp.jsx";
+import Flashcard from "./components/Flashcard.jsx";
+import FlashcardSet from "./components/FlashcardSet.jsx";
+import FlashcardContainer from "./pages/FlashcardContainer.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 
 function App() {
@@ -16,22 +20,13 @@ function App() {
 
   return (
     <div className="wrapper">
-        <header className="navbar">
-          <div className="HomeButton">
-            <Button label={"Home"}></Button>
-          </div>
-          <h1 className="webName" >Flashy</h1>
-          <div className="Login">
-            <div className="LoginButton">
-              <Button label={"Login"}></Button>
-            </div>
-            <div className="SignInButton">
-            <Button label={"Sign Up"}></Button>
-            </div>
-          </div>
-        </header>
+        <Navbar></Navbar>
         <main className="main">
-          <p>Dette er mainen</p>
+          
+          <div className="flashSets">
+                <FlashcardContainer></FlashcardContainer>
+               
+          </div>
         </main>
     </div>
   );
