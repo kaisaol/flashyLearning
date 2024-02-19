@@ -1,7 +1,12 @@
+/* eslint-disable no-unused-vars */
 //import { apiBrukerKall } from "./axios/apiKall";
 import "./styles/App.css";
 import Button from "./components/Button.jsx";
 import SignUp from "./components/SignUp.jsx";
+import Flashcard from "./components/Flashcard.jsx";
+import FlashcardSet from "./components/FlashcardSet.jsx";
+import FlashcardContainer from "./pages/FlashcardContainer.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 
 function App() {
@@ -14,11 +19,15 @@ function App() {
   */
 
   return (
-    <div>
-      Hello world :)
-      <br />
-      <Button />
-      <SignUp></SignUp>
+    <div className="wrapper">
+        <Navbar></Navbar>
+        <main className="main">
+          
+          <div className="flashSets">
+                <FlashcardContainer></FlashcardContainer>
+               
+          </div>
+        </main>
     </div>
   );
 }

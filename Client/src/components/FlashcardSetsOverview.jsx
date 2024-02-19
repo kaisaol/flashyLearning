@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/FlashcardSetsOverview.css';
 
 const FlashcardSetOverview = ({ sets, onSetSelected }) => {
