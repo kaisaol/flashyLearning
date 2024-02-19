@@ -24,7 +24,7 @@
 
 .webName {
   font-size: 280%;
-  padding-left: 18px;
+  padding-left: 58px;
   
   
   color: #9d21b067
@@ -41,5 +41,9 @@
 
 .SignInButton{
   padding-inline: 9px;
+}
+
+.HomeButton{
+  margin-left: 10px;
 }
 
