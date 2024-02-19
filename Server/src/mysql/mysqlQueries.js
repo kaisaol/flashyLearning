@@ -26,6 +26,23 @@ export const getBruker = async (IDs) => {
       return rows;
 }
 
+export const getBrukerByName = async (name) => {
+  const [rows] = await pool
+    .promise()
+    .query(
+      "SELECT * FROM Bruker WHERE Brukernavn in (?)",
+      [name],
+      function (err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(result);
+        }
+      }
+    );
+  return rows;
+};
+
 export const getFlashcardSet = async (IDs) => {
   const [rows] = (await pool
         .promise()
