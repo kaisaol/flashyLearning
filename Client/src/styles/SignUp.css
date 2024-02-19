@@ -1,0 +1,26 @@
+.form{
+    
+    color: #218fd9b7;
+    width: 100px;
+    height: 40px;
+    
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 850;
+}
+
+.headerSignUp{
+    color: #218fd9b7;
+    
+    border-bottom: #898585;
+    padding: 10px 10px
+}
+
+.input{
+    padding: 10px 20px;
+}
+.signUpButton{
+    padding: 10px 20px;
+
+}
