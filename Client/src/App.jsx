@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./styles/App.css";
 import Button from "./components/Button.jsx";
 import SignUp from "./components/SignUp.jsx";
@@ -5,11 +6,24 @@ import SignUp from "./components/SignUp.jsx";
 
 function App() {
   return (
-    <div>
-      Hello world :)
-      <br />
-      <Button  />
-      <SignUp></SignUp>
+    <div className="wrapper">
+        <header className="navbar">
+          <div className="HomeButton">
+            <Button label={"Home"}></Button>
+          </div>
+          <h1 className="webName" >Flashy</h1>
+          <div className="Login">
+            <div className="LoginButton">
+              <Button label={"Login"}></Button>
+            </div>
+            <div className="SignInButton">
+            <Button label={"Sign Up"}></Button>
+            </div>
+          </div>
+        </header>
+        <main className="main">
+          <p>Dette er mainen</p>
+        </main>
     </div>
   );
 }
