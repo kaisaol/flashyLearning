@@ -21,18 +21,19 @@ router.post("/signup", async (req, res) => {
   const passord = nyBruker.passord;
 
   if (brukernavn === undefined || passord === undefined) {
-    res.send(false);
+    res.send(undefined);
     return;
   }
 
   const finnesBruker = await getBrukerByName(brukernavn);
   if (finnesBruker.length > 0) {
-    res.send(false);
+    res.send(undefined);
     return;
   }
 
-  addBruker([brukernavn, passord, "[]", "[]", 0]);
-  res.send(true);
+  addBruker([brukernavn, passord, 0]);
+  const bruker = await getBrukerByName(brukernavn);
+  res.send(bruker);
 });
 
 router.get("/login", async (req, res) => {
@@ -51,7 +52,8 @@ router.get("/login", async (req, res) => {
     return;
   }
 
-  res.send(bruker);
+  console.log(finnesBruker[0]);
+  res.send(finnesBruker[0]);
 });
 
 export default router;

@@ -95,7 +95,7 @@ export const getPopulereSet = async ()=> {
 export const addBruker = async (Data) => {
   await pool
   .promise()
-  .query("INSERT INTO Bruker VALUES (?)", [Data], function(err) {
+  .query("INSERT INTO Bruker (Brukernavn, Passord, Admin) VALUES (?)", [Data], function(err) {
     if(err) {
       console.log(err);
       }

@@ -32,8 +32,8 @@ export const loggInn = async (brukernavn, passord) => {
         passord: passord,
       },
     })
-    .then((data) => {
-      return data.data;
+    .then(async (data) => {
+      return await data.data;
     })
     .catch((error) => {
       console.log(error);

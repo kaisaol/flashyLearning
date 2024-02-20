@@ -9,7 +9,7 @@ const Flashcard = ({ term, definition }) => {
   return (
     <div
       className="card"
-      style={{ 'background-color': color }}
+      style={{ 'backgroundColor': color }}
       onClick={() => setIsFlipped((prev) => !prev)}
     >
       <div className="tittel">{isFlipped ? definition : term}</div>

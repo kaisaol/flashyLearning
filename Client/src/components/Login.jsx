@@ -1,46 +1,68 @@
-import "../styles/Login.css";
-import Button from "./Button.jsx";
-/* eslint-disable no-unused-vars */
-import { useState } from "react";
+import '../styles/Login.css';
+import Button from './Button.jsx';
+import { useState } from 'react';
+import { loggInn } from '../axios/bruker.js';
 
+const Login = ({ handleUserChange }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-const Login = () => {
+  const [feedbackText, setFeedbackText] = useState('');
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+  function handleSetUsername(e) {
+    setUsername(e.target.value);
+  }
 
-    function handleSetUsername(e){
-        setUsername(e.target.value)
+  function handleSetPassword(e) {
+    setPassword(e.target.value);
+  }
+
+  const handleFeedbackChange = (text) => {
+    setFeedbackText(text);
+  };
+
+  const onLoginButtonAction = async () => {
+    const bruker = await loggInn(username, password);
+    if (username === '' || password === '') {
+      handleFeedbackChange('Fyll inn brukernavn og passord');
+      return;
     }
-
-
-    function handleSetPassword(e){
-        setPassword(e.target.value)
+    if (bruker.Brukernavn === undefined) {
+      console.log('Feil brukernavn eller passord');
+      handleFeedbackChange('Feil brukernavn eller passord');
+      return;
     }
+    handleFeedbackChange('');
+    sessionStorage.setItem('bruker', JSON.stringify(bruker));
+    handleUserChange(true);
+  };
 
-    function onLoginButtonAction(e){
-        e.preventDefault();
-        const newUser = {username: username, password: password}
-       
-    }
-
-    return(
-
-        <form>
-
-            <label htmlFor ="username">Brukernavn:</label><br />
-            <input type ="text" id = "username" value={username} onChange={handleSetUsername} ></input><br/>
-            <label htmlFor="password">Passord:</label><br />
-            <input type="password" id="password" value={password} onChange={handleSetPassword}></input><br />
-
-            <Button onClick={onLoginButtonAction} label = "Login" idName = "LoginButton"/>
-
-        </form>
-
-    );
-
-
-}
+  return (
+    <div className="form">
+      <form>
+        <h3 className="headerSignUp">Login!</h3>
+        <label htmlFor="username">Brukernavn:</label>
+        <input
+          type="text"
+          id="username"
+          value={username}
+          onChange={handleSetUsername}
+        ></input>
+        <label htmlFor="password">Passord:</label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={handleSetPassword}
+        ></input>
+      </form>
+      <Button
+        onClick={onLoginButtonAction}
+        label="Login"
+        idName="LoginButton"
+      />
+      <div className="feedback">{feedbackText}</div>
+    </div>
+  );
+};
 export default Login;
-
-
