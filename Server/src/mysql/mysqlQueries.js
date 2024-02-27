@@ -13,10 +13,10 @@ export const getCountry = async (id) => {
 };
 */
 
-export const getBruker = async (IDs) => {
+export const getBruker = async (ID) => {
   const [rows] = (await pool
         .promise()
-        .query("SELECT * FROM Bruker WHERE ID in (?)", [IDs], function(err, result) {
+        .query("SELECT * FROM Bruker WHERE ID in (?)", [ID], function(err, result) {
         if(err) {
           console.log(err);
           } else {
@@ -26,27 +26,10 @@ export const getBruker = async (IDs) => {
       return rows;
 }
 
-export const getBrukerByName = async (name) => {
-  const [rows] = await pool
-    .promise()
-    .query(
-      "SELECT * FROM Bruker WHERE Brukernavn in (?)",
-      [name],
-      function (err, result) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(result);
-        }
-      }
-    );
-  return rows;
-};
-
-export const getFlashcardSet = async (IDs) => {
+export const getFlashcardSet = async (ID) => {
   const [rows] = (await pool
         .promise()
-        .query("SELECT * FROM FlashcardSet WHERE ID in (?)", [IDs], function(err, result) {
+        .query("SELECT * FROM FlashcardSet WHERE ID in (?)", [ID], function(err, result) {
         if(err) {
           console.log(err);
           } else {
@@ -95,7 +78,7 @@ export const getPopulereSet = async ()=> {
 export const addBruker = async (Data) => {
   await pool
   .promise()
-  .query("INSERT INTO Bruker (Brukernavn, Passord, Admin) VALUES (?)", [Data], function(err) {
+  .query("INSERT INTO Bruker(Brukernavn,Passord,Admin) VALUES (?)", [Data], function(err) {
     if(err) {
       console.log(err);
       }
@@ -119,12 +102,21 @@ export const addLikeBruker = async (IDs) => {
   .query("INSERT INTO FavorittSet VALUES (?)", [IDs])
 }
 
-export const addFlashcardSet = async (Data) => {
+export const addFlashcardSet = async (Data,ID) => {
   await pool
   .promise()
   .query("INSERT INTO FlashcardSet (?)", [Data], function(err) {
     if(err) {
       console.log(err);
+      } 
+    }
+  )
+  const flash = pool.query("SELECT SCOPE_IDENTITY()")
+  .query("INSERT INTO MineSet (?)", [ID,flash], function(err){
+    if(err) {
+      console.log(err);
+    } else {
+      return "Acepted"
       }
     }
   )
@@ -178,6 +170,8 @@ export const updateFlashcardSet = async (ID,data) => {
   .query(query, [ID], function(err) {
     if(err) {
       console.log(err);
+      } else {
+        return "Accepted"
       }
   })
 }
