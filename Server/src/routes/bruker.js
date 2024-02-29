@@ -16,7 +16,6 @@ router.get("/", async (req, res) => {
 
 router.post("/signup", async (req, res) => {
   const nyBruker = req.body;
-  console.log(req.body);
   const brukernavn = nyBruker.brukernavn;
   const passord = nyBruker.passord;
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const apiFlashcardKall = async (brukerID) => {
+export const apiFlashcardKall = async (setID) => {
     return await axios.get('http://localhost:3000/flashcardSet', {
         params: {
         ID: setID
