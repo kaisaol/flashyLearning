@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const apiFlashcardKall = async (brukerID) => {
+export const apiFlashcardKall = async (setID) => {
     return await axios.get('http://localhost:3000/flashcardSet', {
         params: {
         ID: setID
@@ -14,7 +14,7 @@ export const apiFlashcardKall = async (brukerID) => {
 }
 
 export const apiaddFlashcard = async (row) => {
-    return await axios.get('http://localhost:3000/addFlashcardSet', {
+    return await axios.get('http://localhost:3000/addFlashcardSet/add', {
         params: {
         row : row
         }
@@ -28,7 +28,7 @@ export const apiaddFlashcard = async (row) => {
 
 
 export const apiupdateFlashcard = async (row,SetID) => {
-    return await axios.get('http://localhost:3000/updateFlashcartSet', {
+    return await axios.get('http://localhost:3000/updateFlashcartSet/update', {
         params: {
         SetID: SetID,
         row : row
