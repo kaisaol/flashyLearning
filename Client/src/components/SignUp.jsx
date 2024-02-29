@@ -21,11 +21,12 @@ const SignUp = ({handleUserChange}) => {
   };
   
   const handleSignUp = async () => {
-    const bruker = await registrer(username, password);
     if(username === '' || password === ''){
       handleFeedbackChange('Fyll inn brukernavn og passord');
       return;
     }
+    
+    const bruker = await registrer(username, password);
     if (bruker === undefined) {
       handleFeedbackChange('Brukeren eksisterer allerede');
       return;

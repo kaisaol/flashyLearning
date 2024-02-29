@@ -17,7 +17,7 @@ function FlashcardContainer() {
       title: 'Geografi',
       cards: [
          { term: 'Hva er lengste elv i Norge?', definition: 'Glomma' },
-         { term: 'Hva er det høyeste fjeller i verden?', definition: 'Mount Everest' },
+         { term: 'Hva er det høyeste fjellet i verden?', definition: 'Mount Everest' },
          { term: 'Hvilke land grenser til Norge?', definition: 'Sverige, Finland og Russland' },
          { term: 'Hvilket land har verdens lengste kystlinje?', definition: 'Canada' },
         

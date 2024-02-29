@@ -1,5 +1,5 @@
 import '../styles/UserInterface.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Button from './Button.jsx';
 import UserMeny from './UserMeny.jsx';
 import UserLogin from './UserLogin.jsx';
@@ -7,20 +7,10 @@ import UserLogin from './UserLogin.jsx';
 const UserInterface = () => {
   const [isLoginHidden, setIsLoginHidden] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const [bruker, setBruker] = useState(sessionStorage.getItem('bruker'));
   
   const handleUserChange = (value) => {
     setIsLoggedIn(value);
   };
-
-  useEffect(() => {
-    if (bruker !== null) {
-      handleUserChange(true);
-    }else{
-      handleUserChange(false);
-    }
-  }, [bruker]);
 
 
   const toggleLogin = () => {
