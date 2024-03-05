@@ -6,12 +6,11 @@ import UserLogin from './UserLogin.jsx';
 
 const UserInterface = () => {
   const [isLoginHidden, setIsLoginHidden] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem('bruker'));
   
   const handleUserChange = (value) => {
     setIsLoggedIn(value);
   };
-
 
   const toggleLogin = () => {
     setIsLoginHidden(!isLoginHidden);
