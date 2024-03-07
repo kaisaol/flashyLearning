@@ -9,8 +9,10 @@ const FlashcardSet = ({ set, onBack }) => {
   );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isSetCompleted, setIsSetCompleted] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   const handleNext = () => {
+    setIsFlipped(false); // Reset the flip state
     let nextIndex = currentIndex + 1;
     if (nextIndex < flashcardsData.length) {
       setCurrentIndex(nextIndex);
@@ -29,6 +31,7 @@ const FlashcardSet = ({ set, onBack }) => {
   };
 
   const handlePrevious = () => {
+    setIsFlipped(false); // Reset the flip state
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
@@ -50,8 +53,11 @@ const FlashcardSet = ({ set, onBack }) => {
   return (
     <div className="flashcard-set">
       <Flashcard
+        key={currentIndex}
         term={flashcardsData[currentIndex].term}
         definition={flashcardsData[currentIndex].definition}
+        isFlipped={isFlipped}
+        setIsFlipped={setIsFlipped}
       />
       <div className="controls">
         <Button onClick={handlePrevious} label="Previous" idName="prevButton" />
