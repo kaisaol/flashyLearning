@@ -9,6 +9,7 @@ const UserMeny = ({handleUserChange}) => {
     const logout = () => {
         sessionStorage.removeItem('bruker');
         handleUserChange(false);
+        return navigate('/');
     }
 
     const goToMySet = () => {
