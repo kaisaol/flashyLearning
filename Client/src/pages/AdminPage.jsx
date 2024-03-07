@@ -2,6 +2,8 @@
 import {getAllSets} from '../axios/bruker';
 import { useState } from 'react';
 import MyFlashcardContainer from '../components/MyFlashcardContainer';
+import '../styles/AdminPage.css';
+
 
 const AdminPage = () => {
 
@@ -22,8 +24,8 @@ const AdminPage = () => {
 
 return (
     <>
-    <div>Hei</div>
-    <div>
+    <div><h1>Administrer sets</h1></div>
+    <div className='adminpp'>
         <MyFlashcardContainer oppdaterSetValgt={oppdaterSetValgt} getData={getAllSets} />
     </div>
     </>

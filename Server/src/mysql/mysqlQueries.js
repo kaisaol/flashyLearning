@@ -180,10 +180,10 @@ export const addKommentar = async (Data) => {
   )
 }
 
-export const removeFavorittSet = async (ID) => {
+export const removeFlashcardSet = async (setID) => {
   await pool
   .promise()
-  .query("DELETE FROM FavorittSet WHERE SetID = (?)", [ID], function(err) {
+  .query("DELETE FROM FlashcardSet WHERE ID = (?)", [setID], function(err) {
     if(err) {
       console.log(err);
       }

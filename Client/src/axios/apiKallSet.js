@@ -40,3 +40,16 @@ export const apiupdateFlashcard = async (row,SetID) => {
         console.log(error);
     });
 }
+
+export const deleteFlashcard = async (setID) => {
+    return await axios.delete('http://localhost:3000/flashcard/delete', {
+        params: {
+        setID: setID,
+        }
+    }).then((data) => {
+        console.log(data);
+        return data.data;
+    }).catch((error) => {
+        console.log(error);
+    });
+}
