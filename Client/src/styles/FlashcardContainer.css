@@ -1,6 +1,8 @@
-.FlashcardContainer {
+.flashcardContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+}
+#backButton {
+  margin-bottom: 100px;
 }

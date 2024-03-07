@@ -39,3 +39,19 @@ export const loggInn = async (brukernavn, passord) => {
       console.log(error);
     });
 };
+
+export const getMineSet = async (brukerID) => {
+  return await axios
+    .get('http://localhost:3000/bruker/mySets', {
+      params: {
+        ID: brukerID,
+      },
+    })
+    .then(async (data) => {
+      return await data.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
