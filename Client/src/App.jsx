@@ -1,12 +1,10 @@
 /* eslint-disable no-unused-vars */
 //import { apiBrukerKall } from "./axios/apiKall";
 import './styles/App.css';
-import Button from './components/Button.jsx';
-import SignUp from './components/SignUp.jsx';
-import Flashcard from './components/Flashcard.jsx';
-import FlashcardSet from './components/FlashcardSet.jsx';
-import FlashcardContainer from './pages/FlashcardContainer.jsx';
+import { Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
+import FrontPage from './pages/Frontpage.jsx';
+import MySet from './pages/MySet.jsx';
 import FlashcardSetCreator from './pages/OppretteFlashcard.jsx';
 
 function App() {
@@ -21,11 +19,10 @@ function App() {
   return (
     <div className="wrapper">
       <Navbar></Navbar>
-      <main className="main">
-        <div className="flashSets">
-          <FlashcardSetCreator></FlashcardSetCreator>
-        </div>
-      </main>
+      <Routes>
+        <Route path="/" element={<FrontPage />} />
+        <Route path="/myset" element={<MySet/>} />
+      </Routes>
     </div>
   );
 }

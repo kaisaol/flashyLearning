@@ -3,6 +3,7 @@ import {
   addBruker,
   getBruker,
   getBrukerByName,
+  getBrukerSet,
 } from "../mysql/mysqlQueries.js";
 
 export const router = express.Router();
@@ -14,9 +15,15 @@ router.get("/", async (req, res) => {
   res.send(bruker);
 });
 
+router.get("/mySets", async (req, res) => {
+  console.log(req.query);
+  const brukerID = req.query.ID;
+  const brukerSets = await getBrukerSet(brukerID);
+  res.send(brukerSets);
+});
+
 router.post("/signup", async (req, res) => {
   const nyBruker = req.body;
-  console.log(req.body);
   const brukernavn = nyBruker.brukernavn;
   const passord = nyBruker.passord;
 

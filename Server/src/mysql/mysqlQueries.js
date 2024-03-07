@@ -26,19 +26,22 @@ export const getBruker = async (ID) => {
       return rows;
 }
 
-export const getBrukerByName = async (ID) => {
-  const [rows] = (await pool
+export const getBrukerByName = async (name) => {
+  const [rows] = await pool
     .promise()
-    .query("SELECT * FROM Bruker WHERE Name in (?)", [ID], function(err, result) {
-      if(err) {
-        console.log(err);
-      } else {
-        console.log(result);
+    .query(
+      "SELECT * FROM Bruker WHERE Brukernavn in (?)",
+      [name],
+      function (err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(result);
+        }
       }
-    }))
-    return rows;
-    
-}
+    );
+  return rows;
+};
 
 export const getFlashcardSet = async (ID) => {
   const [rows] = (await pool
@@ -65,6 +68,23 @@ export const getKommentar = async (IDs) => {
       }))
       return rows;
 }
+
+export const getBrukerSet = async (ID) => {
+  const [rows] = await pool
+    .promise()
+    .query(
+      "SELECT * FROM MineSet INNER JOIN FlashcardSet ON (MineSet.FlashcardSetID = FlashcardSet.ID) WHERE BrukerID in (?)",
+      [ID],
+      function (err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(result);
+        }
+      }
+    );
+  return rows;
+};
 
 export const getFavoritSet = async (IDs) => {
   const [rows] = (await pool
