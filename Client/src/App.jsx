@@ -5,6 +5,7 @@ import { Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import FrontPage from './pages/Frontpage.jsx';
 import MySet from './pages/MySet.jsx';
+import FlashcardSetCreator from './pages/OppretteFlashcard.jsx';
 
 function App() {
   /**

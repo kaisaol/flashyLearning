@@ -139,14 +139,22 @@ export const addLikeBruker = async (IDs) => {
 export const addFlashcardSet = async (Data,ID) => {
   await pool
   .promise()
-  .query("INSERT INTO FlashcardSet (?)", [Data], function(err) {
+  .query("INSERT INTO FlashcardSet(Navn,Beskrivelse,Data,Tags,Likes) VALUES (?)", [Data], function(err) {
     if(err) {
       console.log(err);
       } 
     }
   )
-  const flash = pool.query("SELECT SCOPE_IDENTITY()")
-  .query("INSERT INTO MineSet (?)", [ID,flash], function(err){
+  const [flash] = (await pool
+    .promise()
+    .query("SELECT ID FROM FlashcardSet WHERE Navn = ? ORDER BY ID DESC",[Data[0]], function(err) {
+    if(err) {
+    console.log(err);
+    }
+    }
+  ))
+  console.log(flash[0].ID)
+  pool.query("INSERT INTO MineSet VALUES (?)", [[ID,flash[0].ID]], function(err){
     if(err) {
       console.log(err);
     } else {
@@ -167,10 +175,10 @@ export const addKommentar = async (Data) => {
   )
 }
 
-export const removeFavorittSet = async (ID) => {
+export const removeFlashcardSet = async (ID) => {
   await pool
   .promise()
-  .query("DELETE FROM FavorittSet WHERE SetID = (?)", [ID], function(err) {
+  .query("DELETE FROM FlashcardSet WHERE ID = ?", [ID], function(err) {
     if(err) {
       console.log(err);
       }
