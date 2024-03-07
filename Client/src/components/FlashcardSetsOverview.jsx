@@ -4,9 +4,13 @@ import { deleteFlashcard } from '../axios/apiKallSet';
 
 const FlashcardSetOverview = ({ sets, onSetSelected }) => {
 
-  const handleDelete = (setId) => {
-    const sjekk = deleteFlashcard(setId);
-    console.log(sjekk)
+  const handleDelete = (setId, e) => {
+    e.stopPropagation();
+    const isConfirmed = window.confirm("Er du sikker på at du vil slette dette settet?");
+    if (isConfirmed) {
+      const sjekk = deleteFlashcard(setId);
+      console.log(sjekk);
+  }
   }
 
   const user = JSON.parse(sessionStorage.getItem('bruker')); 
