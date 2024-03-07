@@ -7,6 +7,7 @@ import Flashcard from './components/Flashcard.jsx';
 import FlashcardSet from './components/FlashcardSet.jsx';
 import FlashcardContainer from './pages/FlashcardContainer.jsx';
 import Navbar from './components/Navbar.jsx';
+import FlashcardSetCreator from './pages/OppretteFlashcard.jsx';
 
 function App() {
   /**
@@ -22,7 +23,7 @@ function App() {
       <Navbar></Navbar>
       <main className="main">
         <div className="flashSets">
-          <FlashcardContainer></FlashcardContainer>
+          <FlashcardSetCreator></FlashcardSetCreator>
         </div>
       </main>
     </div>
