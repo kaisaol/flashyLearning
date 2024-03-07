@@ -5,6 +5,7 @@ import { Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import FrontPage from './pages/Frontpage.jsx';
 import MySet from './pages/MySet.jsx';
+import AdminPage from './pages/AdminPage.jsx';
 
 function App() {
   /**
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<FrontPage />} />
         <Route path="/myset" element={<MySet/>} />
+        <Route path="/admin" element ={<AdminPage/>} > </Route>
       </Routes>
     </div>
   );

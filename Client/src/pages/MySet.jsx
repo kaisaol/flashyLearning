@@ -15,6 +15,7 @@ const MySet = () => {
     return mySets;
   };
 
+  // eslint-disable-next-line no-unused-vars
   const display = erSetValgt ? 'none' : 'block';
 
   return (

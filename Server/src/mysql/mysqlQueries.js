@@ -56,6 +56,19 @@ export const getFlashcardSet = async (ID) => {
       return rows;
 }
 
+export const getAllFlashcardSet = async () => {
+  const [rows] = (await pool
+        .promise()
+        .query("SELECT * FROM FlashcardSet", function(err, result) {
+        if(err) {
+          console.log(err);
+          } else {
+          console.log(result);
+        }
+      }))
+      return rows;
+}
+
 export const getKommentar = async (IDs) => {
   const [rows] = (await pool
         .promise()
