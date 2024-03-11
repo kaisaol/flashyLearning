@@ -6,7 +6,7 @@ import UserLogin from './UserLogin.jsx';
 
 const UserInterface = () => {
   const [isLoginHidden, setIsLoginHidden] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem('bruker'));
+  const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem('bruker') != undefined);
   
   const handleUserChange = (value) => {
     setIsLoggedIn(value);
@@ -17,10 +17,11 @@ const UserInterface = () => {
   };
 
   const display = isLoginHidden ? 'none' : 'block';
+  const buttonText = isLoggedIn ? 'Account' : 'Login';
 
   return (
     <div id="userContainer">
-      <Button label={'Login'} onClick={toggleLogin} />
+      <Button label={buttonText} onClick={toggleLogin} />
       <div id="loginContainer" style={{ display: display }}>
         <div className="uparrow"></div>
         {isLoggedIn ? <UserMeny handleUserChange={handleUserChange} /> : <UserLogin handleUserChange={handleUserChange} />}
