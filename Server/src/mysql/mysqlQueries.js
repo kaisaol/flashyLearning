@@ -56,6 +56,19 @@ export const getFlashcardSet = async (ID) => {
       return rows;
 }
 
+export const getAllFlashcardSet = async () => {
+  const [rows] = (await pool
+        .promise()
+        .query("SELECT * FROM FlashcardSet", function(err, result) {
+        if(err) {
+          console.log(err);
+          } else {
+          console.log(result);
+        }
+      }))
+      return rows;
+}
+
 export const getKommentar = async (IDs) => {
   const [rows] = (await pool
         .promise()
@@ -175,10 +188,10 @@ export const addKommentar = async (Data) => {
   )
 }
 
-export const removeFlashcardSet = async (ID) => {
+export const removeFlashcardSet = async (setID) => {
   await pool
   .promise()
-  .query("DELETE FROM FlashcardSet WHERE ID = ?", [ID], function(err) {
+  .query("DELETE FROM FlashcardSet WHERE ID = (?)", [setID], function(err) {
     if(err) {
       console.log(err);
       }

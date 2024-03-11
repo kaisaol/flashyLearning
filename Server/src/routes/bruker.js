@@ -4,6 +4,7 @@ import {
   getBruker,
   getBrukerByName,
   getBrukerSet,
+  getAllFlashcardSet,
 } from "../mysql/mysqlQueries.js";
 
 export const router = express.Router();
@@ -20,6 +21,12 @@ router.get("/mySets", async (req, res) => {
   const brukerID = req.query.ID;
   const brukerSets = await getBrukerSet(brukerID);
   res.send(brukerSets);
+});
+
+router.get("/allSets", async (req, res) => {
+  console.log(req.query);
+  const flashcardSets = await getAllFlashcardSet();
+  res.send(flashcardSets);
 });
 
 router.post("/signup", async (req, res) => {
