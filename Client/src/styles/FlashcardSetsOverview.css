@@ -24,8 +24,23 @@
   /* Example background (solid color or image URL) */
   background-color: #dddddd; /* Fallback color */
   /* background-image: url('path/to/your/image.jpg'); */
+  position: relative;
 }
 
 .set-preview h2 {
   margin: 0;
+}
+
+.delete-set-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+  position: absolute;
+  top: -7%;
+  right: -10%;
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  background-color: #8b0008;
+
 }

@@ -15,13 +15,14 @@ const MySet = () => {
     return mySets;
   };
 
+  // eslint-disable-next-line no-unused-vars
   const display = erSetValgt ? 'none' : 'block';
 
   return (
     <>
       {bruker ? (
         <div>
-          <h1>MySet</h1>
+          <h1>My sets</h1>
           <FlashcardContainer oppdaterSetValgt={oppdaterSetValgt} getData={getMySets} />
         </div>
       ) : (
