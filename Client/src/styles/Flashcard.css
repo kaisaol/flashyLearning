@@ -1,18 +1,23 @@
+
 .card {
   display: flex;
-  width: 500px;
-  height: 300px;
-  background-color: darkturquoise;
+  width: 800px;
+  height: 500px;
+  background-color: #40e0d0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: 400;
   border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 20px;
+  margin-top: 50px;
 }
 
 .tittel {
-  /* height: fit-content; */
   font-size: 40px;
   color: black;
-  /* font-family: 'Courier New', Courier, monospace; */
+  text-align: center; /* Ensuring text is centered */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* More readable font */
 }
