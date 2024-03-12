@@ -11,7 +11,7 @@ const flashcardsData = [
 
 const FlashcardSet = ({ set, onBack }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const flashcardsData = set.cards;
+  const flashcardsData = JSON.parse(set.Data);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % flashcardsData.length);

@@ -66,3 +66,27 @@ export const deleteFlashcard = async (setID) => {
         console.log(error);
     });
 }
+
+export const likeFlashcard = async (setID) => {
+    return await axios.post('http://localhost:3000/flashcardset/like', {
+        setID: setID,
+    }).then((data) => {
+        console.log(data.data)
+        return data.data;
+    }).catch((error) => {
+        console.log(error);
+    });
+}
+
+export const getLikeCount = async (setID) => {
+    return await axios.get('http://localhost:3000/flashcard/getLikes', {
+        params: {
+        setID: setID,
+        }
+    }).then((data) => {
+        console.log(data);
+        return data.data;
+    }).catch((error) => {
+        console.log(error);
+    });
+}
