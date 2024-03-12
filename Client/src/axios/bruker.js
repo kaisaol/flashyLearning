@@ -3,7 +3,7 @@ import axios from 'axios';
 /**
  * @param brukernavn is the username of the user
  * @param passord is the password of the user
- * @returns true if the username is available and registered, false if it is not
+ * @returns user if the user is created, undefined if the user is not created
  */
 export const registrer = async (brukernavn, passord) => {
   return await axios
@@ -12,7 +12,7 @@ export const registrer = async (brukernavn, passord) => {
       passord: passord,
     })
     .then((data) => {
-      return data.data;
+      return data.data[0];
     })
     .catch((error) => {
       console.log(error);
@@ -55,3 +55,42 @@ export const getMineSet = async (brukerID) => {
     });
 };
 
+export const getAlleBrukere = async () => {
+  return await axios
+    .get('http://localhost:3000/bruker/allUsers')
+    .then(async (data) => {
+      return await data.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const endreAdmin = async (brukerID, admin) => {
+  return await axios
+    .post('http://localhost:3000/bruker/changeAdmin', {
+      ID: brukerID,
+      Admin: admin,
+    })
+    .then(async (data) => {
+      return await data.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const slettBruker = async (brukerID) => {
+  return await axios
+    .delete('http://localhost:3000/bruker/deleteUser', {
+      params: {
+        ID: brukerID,
+      },
+    })
+    .then(async (data) => {
+      return await data.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
