@@ -25,15 +25,20 @@ const UserMeny = ({handleUserChange}) => {
 
     const display = isAdmin ? 'block' : 'none';
 
+    const goToAdminUsers = () => {
+      return navigate('/users');
+    }
+
     return (
       <>
       <div>
         <Button label={'Logout'} onClick={logout} />
-        <Button label= {'Mine Set'} onClick={goToMySet}></Button>
+        <Button label={'Mine Set'} onClick={goToMySet}></Button>
         <div style={{ display: display }}>
           <Button label= {'Administrer'} onClick={goToAdminPage}></Button>
         </div>
         </div>
+        <Button label={'Administrer '} onClick={goToAdminUsers}></Button>
       </>
     );
 }
