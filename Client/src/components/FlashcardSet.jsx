@@ -10,12 +10,16 @@ const FlashcardSet = ({ set, onBack }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isSetCompleted, setIsSetCompleted] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [currentIndexClone, setClone] = useState(0);
 
+    
   const handleNext = () => {
     setIsFlipped(false); // Reset the flip state
     let nextIndex = currentIndex + 1;
+    let nxtClone = currentIndexClone +1;
     if (nextIndex < flashcardsData.length) {
       setCurrentIndex(nextIndex);
+      setClone(nxtClone);
     } else {
       const hardCardsOnly = flashcardsData.filter((card) => card.isHard);
 
@@ -25,7 +29,9 @@ const FlashcardSet = ({ set, onBack }) => {
         setFlashcardsData(
           hardCardsOnly.map((card) => ({ ...card, isHard: false }))
         );
+        setClone(nxtClone);
         setCurrentIndex(0);
+        
       }
     }
   };
@@ -33,7 +39,10 @@ const FlashcardSet = ({ set, onBack }) => {
   const handlePrevious = () => {
     setIsFlipped(false); // Reset the flip state
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+    setClone((prevIndex) => Math.max(prevIndex - 1, 0));
   };
+
+  const [len, setLen]  = useState(flashcardsData.length);
 
   const handleMarkAsHard = () => {
     setFlashcardsData(
@@ -41,7 +50,10 @@ const FlashcardSet = ({ set, onBack }) => {
         index === currentIndex ? { ...card, isHard: !card.isHard } : card
       )
     );
+    setLen(len + 1);
   };
+
+  const progress = ((currentIndexClone + 1) / len) * 100;
 
   if (isSetCompleted) {
     return (
@@ -52,6 +64,11 @@ const FlashcardSet = ({ set, onBack }) => {
   }
   return (
     <div className="flashcard-set">
+      {/* Progress bar */}
+      <div className="progress-bar-container" style={{ width: '100%', backgroundColor: '#eee' }}>
+        <div className="progress-bar" style={{ width: `${progress}%`, backgroundColor: 'green', height: '20px' }}></div>
+      </div>
+      
       <Flashcard
         key={currentIndex}
         term={flashcardsData[currentIndex].term}

@@ -14,3 +14,40 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
+
+.flashcard-set {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.flashcard-set-completed {
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.progress-bar-container {
+  width: 100%;
+  background-color: #f0f0f0; /* Lysere grå for bakgrunnen */
+  border-radius: 25px; /* Runde hjørner */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtil skygge for dybde */
+  overflow: hidden; /* Holder barnets runde hjørner inne */
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #4CAF50; /* En roligere grønn farge */
+  width: 0%; /* Start bredde, justeres dynamisk */
+  border-radius: 25px; /* Runde hjørner */
+  transition: width 0.5s ease-in-out; /* Glatte overganger */
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+
