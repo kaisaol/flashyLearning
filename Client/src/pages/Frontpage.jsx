@@ -2,6 +2,7 @@ import '../styles/Frontpage.css';
 import { useState } from 'react';
 import FlashcardContainer from './FlashcardContainer';
 
+
 const FrontPage = () => {
   const [erSetValgt, setErSetValgt] = useState(false);
 

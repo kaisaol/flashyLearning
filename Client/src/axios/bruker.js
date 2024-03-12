@@ -55,6 +55,22 @@ export const getMineSet = async (brukerID) => {
     });
 };
 
+export const getAllSets = async () => {
+  return await axios
+    .get('http://localhost:3000/bruker/allSets', {
+      params: {
+        
+      },
+    })
+    .then(async (data) => {
+      return await data.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+
 export const getAlleBrukere = async () => {
   return await axios
     .get('http://localhost:3000/bruker/allUsers')
