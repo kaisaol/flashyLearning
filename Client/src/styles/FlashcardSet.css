@@ -1,3 +1,4 @@
+
 .flashcard-set {
   display: flex;
   flex-direction: column;
@@ -10,9 +11,10 @@
 
 button {
   margin: 0 10px;
-  padding: 10px;
+  padding: 10px 20px; 
   font-size: 16px;
   cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.2s ease; 
 }
 
 .flashcard-set {
