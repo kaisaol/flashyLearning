@@ -1,7 +1,6 @@
 import '../styles/Frontpage.css';
 import { useEffect, useState } from 'react';
 import FlashcardContainer from './FlashcardContainer';
-import {getPopularSets} from '../axios/bruker';
 import axios from 'axios';
 
 
@@ -29,6 +28,8 @@ const FrontPage = () => {
   if(isLoading){
     return <div> Loading...</div>
   }
+
+
   const display = erSetValgt ? 'none' : 'block';
 
   return (

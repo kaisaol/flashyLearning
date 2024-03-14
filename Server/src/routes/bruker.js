@@ -5,6 +5,7 @@ import {
   getBrukerByName,
   getBrukerSet,
   getAllFlashcardSet,
+  getPopulereSet
 } from "../mysql/mysqlQueries.js";
 
 export const router = express.Router();
@@ -21,6 +22,11 @@ router.get("/mySets", async (req, res) => {
   const brukerID = req.query.ID;
   const brukerSets = await getBrukerSet(brukerID);
   res.send(brukerSets);
+});
+
+router.get("/popularSets", async (req, res) => {
+  const popularSets = await getPopulereSet();
+  res.send(popularSets);
 });
 
 router.get("/allSets", async (req, res) => {
