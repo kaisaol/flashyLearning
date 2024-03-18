@@ -146,8 +146,8 @@ function FlashcardContainer({ oppdaterSetValgt, getData }) {
     },
   ];
 
-  const flashcardSetsData = getData ? [getData()] : mockData;
-  const currentSet = flashcardSetsData.find((set) => set.id === currentSetId);
+  const flashcardSetsData = getData ? getData : mockData;
+  const currentSet = flashcardSetsData.find((set) => set.ID === currentSetId);
   const shuffledCards = currentSet ? shuffleArray([...currentSet.cards]) : [];
 
   return (

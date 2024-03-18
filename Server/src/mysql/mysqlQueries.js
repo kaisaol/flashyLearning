@@ -124,7 +124,15 @@ export const getFavoritSet = async (IDs) => {
 export const getPopulereSet = async ()=> {
   const [rows] = (await pool
     .promise()
-    .query("SELECT * FROM FlashcardSet ORDER BY Likes",)
+    .query("SELECT * FROM FlashcardSet ORDER BY Likes DESC",)
+    )
+    return rows;
+}
+
+export const getLikeCount = async (ID)=> {
+  const [rows] = (await pool
+    .promise()
+    .query("SELECT Likes FROM FlashcardSet Where ID = (?)",[ID])
     )
     return rows;
 }
@@ -151,6 +159,8 @@ export const addLikeSet = async (ID) => {
     }
   })
 }
+
+
 
 export const addLikeBruker = async (IDs) => {
   await pool

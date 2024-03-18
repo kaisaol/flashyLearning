@@ -7,8 +7,6 @@ import deleteFlashcardRouter from "./routes/deleteFlashcard.js";
 const app = express();
 app.use(cors());
 app.use(express.json());
-/*
-app.use("/bruker", brukerRouter);*/
 app.use("/flashcardSet", setRouter)
 app.use("/flashcard", deleteFlashcardRouter);
 app.use("/bruker", brukerRouter);

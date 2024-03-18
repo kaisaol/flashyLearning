@@ -4,8 +4,9 @@ import Flashcard from './Flashcard';
 import '../styles/FlashcardSet.css';
 
 const FlashcardSet = ({ set, onBack }) => {
+  const cards = JSON.parse(set.Data)
   const [flashcardsData, setFlashcardsData] = useState(
-    set.cards.map((card) => ({ ...card, isHard: false }))
+    cards.map((card) => ({ ...card, isHard: false }))
   );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isSetCompleted, setIsSetCompleted] = useState(false);
@@ -13,6 +14,8 @@ const FlashcardSet = ({ set, onBack }) => {
   const [currentIndexClone, setClone] = useState(0);
 
     
+ 
+
   const handleNext = () => {
     setIsFlipped(false); // Reset the flip state
     let nextIndex = currentIndex + 1;

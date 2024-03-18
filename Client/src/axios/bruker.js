@@ -70,6 +70,20 @@ export const getAllSets = async () => {
     });
 };
 
+export const getPopularSets = async () => {
+  return await axios
+    .get('http://localhost:3000/bruker/popularSets', {
+      params: {
+        
+      },
+    })
+    .then(async (data) => {
+      return await data.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 export const getAlleBrukere = async () => {
   return await axios

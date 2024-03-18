@@ -1,8 +1,13 @@
 import '../styles/FlashcardSetsOverview.css';
 import { useLocation } from 'react-router-dom';
-import { deleteFlashcard } from '../axios/apiKallSet';
+import { deleteFlashcard, likeFlashcard } from '../axios/apiKallSet';
+
+
 
 const FlashcardSetOverview = ({ sets, onSetSelected }) => {
+
+
+  console.log(sets)
 
   const handleDelete = (setId, e) => {
     e.stopPropagation();
@@ -12,6 +17,7 @@ const FlashcardSetOverview = ({ sets, onSetSelected }) => {
       console.log(sjekk);
   }
   }
+
 
   const user = JSON.parse(sessionStorage.getItem('bruker')); 
   const location = useLocation();
@@ -26,19 +32,34 @@ const FlashcardSetOverview = ({ sets, onSetSelected }) => {
 
   const display = showDelete ? 'block' : 'none';
 
+  const handleLike =  (setID) => {
+    likeFlashcard(setID)
+    window.location.reload();
+  }
+
   return (
+    <>
     <div className="sets-container">
       {sets.map((set) => (
+        <>
         <div
           key={set.id}
-          onClick={() => onSetSelected(set.id)}
           className="set-preview"
         >
-          <h2>{set.title}</h2>
-          <button style = {{display:display}} onClick={(e) => handleDelete(set.id, e)} className="delete-set-btn">x</button>
+          <div 
+          onClick={() => onSetSelected(set.ID)}
+          >
+          <h2>{set.Navn}</h2>
+          <button style = {{display:display}} onClick={(e) => handleDelete(set.ID, e)} className="delete-set-btn">x</button>
+          <p>Likes: {set.Likes} </p>
+          </div>
+          <button className = "likeButton" onClick={() => handleLike(set.ID)} > Like </button>
         </div>
+      </>
+        
       ))}
     </div>
+    </>
   );
 };
 

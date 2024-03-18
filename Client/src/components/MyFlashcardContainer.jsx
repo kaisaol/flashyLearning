@@ -24,6 +24,7 @@ function MyFlashcardContainer({oppdaterSetValgt, getData}) {
     {
       id: 'set1',
       title: 'Geografi',
+      likes: 0,
       cards: [
         { term: 'Hva er lengste elv i Norge?', definition: 'Glomma' },
         {
@@ -44,8 +45,10 @@ function MyFlashcardContainer({oppdaterSetValgt, getData}) {
     
   ];
 
-  const flashcardSetsData = getData ? [getData()] : mockData;
-  const currentSet = flashcardSetsData.find((set) => set.id === currentSetId);
+  const flashcardSetsData = getData ? getData : mockData;
+  const currentSet = flashcardSetsData.find((set) => set.ID === currentSetId);
+
+  console.log(getData)
 
   return (
     <div className='flashcardContainer'>
