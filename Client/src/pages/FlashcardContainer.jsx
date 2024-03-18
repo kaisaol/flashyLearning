@@ -5,7 +5,7 @@ import Button from '../components/Button.jsx';
 import FlashcardSet from '../components/FlashcardSet.jsx';
 import FlashcardSetsOverview from '../components/FlashcardSetsOverview.jsx';
 
-function FlashcardContainer({oppdaterSetValgt, getData}) {
+function FlashcardContainer({ oppdaterSetValgt, getData }) {
   const [currentSetId, setCurrentSetId] = useState(null);
 
   const handleSetSelected = (id) => {
@@ -13,12 +13,29 @@ function FlashcardContainer({oppdaterSetValgt, getData}) {
   };
 
   useEffect(() => {
-    if(currentSetId) {
+    if (currentSetId) {
       oppdaterSetValgt(true);
     } else {
       oppdaterSetValgt(false);
     }
   }, [currentSetId, oppdaterSetValgt]);
+
+  const shuffleArray = (array) => {
+    let currentIndex = array.length,
+      randomIndex;
+
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  };
 
   const mockData = [
     {
@@ -131,9 +148,10 @@ function FlashcardContainer({oppdaterSetValgt, getData}) {
 
   const flashcardSetsData = getData ? getData : mockData;
   const currentSet = flashcardSetsData.find((set) => set.ID === currentSetId);
+  const shuffledCards = currentSet ? shuffleArray([...currentSet.cards]) : [];
 
   return (
-    <div className='flashcardContainer'>
+    <div className="flashcardContainer">
       {currentSetId && (
         <Button
           onClick={() => handleSetSelected(null)}
@@ -142,12 +160,12 @@ function FlashcardContainer({oppdaterSetValgt, getData}) {
         />
       )}
       {currentSetId ? (
-        <FlashcardSet set={currentSet} />
+        <FlashcardSet set={{ ...currentSet, cards: shuffledCards }} />
       ) : (
-          <FlashcardSetsOverview
-            sets={flashcardSetsData}
-            onSetSelected={handleSetSelected}
-          />
+        <FlashcardSetsOverview
+          sets={flashcardSetsData}
+          onSetSelected={handleSetSelected}
+        />
       )}
     </div>
   );

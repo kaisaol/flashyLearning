@@ -1,16 +1,16 @@
-.defaultButton{
+.defaultButton {
+  background-color: #d3d3d3;
+  color: #404040;
+  height: 40px;
+  border-radius: 15px;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  border: 3px solid #404040;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-    background-color: blanchedalmond;
-    color: #218fd9b7;
-    height: 40px;
-    
-    border-radius: 15px;
-    font-size: 14px;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 850;
-    
-    border-color: #218fd9b7 ;
-    border-width: 3px;
-
-  }
-
+.defaultButton:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}

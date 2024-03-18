@@ -45,8 +45,10 @@ function MyFlashcardContainer({oppdaterSetValgt, getData}) {
     
   ];
 
-  const flashcardSetsData = getData ? [getData] : mockData;
-  const currentSet = flashcardSetsData.find((set) => set.id === currentSetId);
+  const flashcardSetsData = getData ? getData : mockData;
+  const currentSet = flashcardSetsData.find((set) => set.ID === currentSetId);
+
+  console.log(getData)
 
   return (
     <div className='flashcardContainer'>

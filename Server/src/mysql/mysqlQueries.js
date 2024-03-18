@@ -26,6 +26,15 @@ export const getBruker = async (ID) => {
       return rows;
 }
 
+export const getAlleBrukere = async () => {
+  const [rows] = (await pool
+    .promise()
+    .query(
+      "SELECT * FROM Bruker",)
+      );
+  return rows;
+};
+
 export const getBrukerByName = async (name) => {
   const [rows] = await pool
     .promise()

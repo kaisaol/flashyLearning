@@ -1,6 +1,6 @@
 import '../styles/Frontpage.css';
 import { useEffect, useState } from 'react';
-import FlashcardContainer from './FlashcardContainer';
+import MyFlashcardContainer from '../components/MyFlashcardContainer';
 import axios from 'axios';
 
 
@@ -29,7 +29,6 @@ const FrontPage = () => {
     return <div> Loading...</div>
   }
 
-
   const display = erSetValgt ? 'none' : 'block';
 
   return (
@@ -44,7 +43,7 @@ const FrontPage = () => {
           </p>
         </div>
       </div>
-      <FlashcardContainer oppdaterSetValgt={oppdaterSetValgt} getData={sets}
+      <MyFlashcardContainer oppdaterSetValgt={oppdaterSetValgt} getData={sets}
        />
       </>
   );

@@ -27,8 +27,7 @@ const SignUp = ({handleUserChange}) => {
     }
     
     const bruker = await registrer(username, password);
-    console.log(bruker);
-    if (bruker !== undefined) {
+    if (bruker?.ID === undefined) {
       handleFeedbackChange('Brukeren eksisterer allerede');
       return;
     }

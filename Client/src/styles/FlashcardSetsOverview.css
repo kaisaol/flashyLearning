@@ -21,10 +21,23 @@
   padding: 20px;
   box-sizing: border-box;
   text-align: center;
-  /* Example background (solid color or image URL) */
-  background-color: #dddddd; /* Fallback color */
-  /* background-image: url('path/to/your/image.jpg'); */
   position: relative;
+}
+/* Different background colors for different sets */
+.set-preview:nth-child(4n+1) {
+  background-color: #ffc0cb;
+}
+
+.set-preview:nth-child(4n+2) {
+  background-color: #b0e0e6;
+}
+
+.set-preview:nth-child(4n+3) {
+  background-color: #ffff99;
+}
+
+.set-preview:nth-child(4n+4) {
+  background-color: #99cc99;
 }
 
 .set-preview h2 {
