@@ -1,0 +1,27 @@
+#userContainer{
+    position: relative;
+}
+
+#loginContainer{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    position: absolute;
+    top: 145%;
+    right: 0;
+    background-color: gray;
+    padding: 5%;
+    border-radius: 15px;
+    z-index: 1000;
+}
+
+.uparrow{
+    position: absolute;
+    bottom: 100%;
+    right: 20%;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid gray;
+}

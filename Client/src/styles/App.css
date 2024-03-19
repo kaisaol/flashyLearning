@@ -1,3 +1,61 @@
 #root {
   max-width: 100vw
+  
 }
+
+*{
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: gray;
+  width:100%;
+  height: 70px;
+}
+
+
+.HomeButton,
+.Login {
+  margin-right: 20px;
+}
+
+.webName {
+  font-size: 280%;
+  padding-left: 58px;
+  color: black
+}
+
+.Login{
+  justify-content: space-evenly;
+  display: flex;
+}
+
+.LoginButton{
+  padding-inline: 9px;
+}
+
+.SignInButton{
+  padding-inline: 9px;
+}
+
+.HomeButton{
+  margin-left: 10px;
+}
+
+.welMessage {
+  padding-top: 45px;
+  padding-bottom: 45px;
+  padding-right: 10%;
+  padding-left: 10%;
+  
+}
+
+

@@ -1,0 +1,23 @@
+
+.card {
+  display: flex;
+  width: 800px;
+  height: 500px;
+  background-color: #40e0d0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.tittel {
+  font-size: 40px;
+  color: black;
+  text-align: center; /* Ensuring text is centered */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* More readable font */
+}
