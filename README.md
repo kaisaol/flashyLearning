@@ -2,11 +2,11 @@
 
 ## Konvensjoner
 
-Lag ny branch for hver task
+Lag ny branch når man utvikler en ny feature
 
-Merge tasken er ferdig via issue
+Commit til din branch ofte 
 
-Commit til egen branch ofte
+
 
 ## Description
 
