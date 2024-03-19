@@ -26,6 +26,15 @@ export const getBruker = async (ID) => {
       return rows;
 }
 
+export const getAlleBrukere = async () => {
+  const [rows] = (await pool
+    .promise()
+    .query(
+      "SELECT * FROM Bruker",)
+      );
+  return rows;
+};
+
 export const getBrukerByName = async (name) => {
   const [rows] = await pool
     .promise()
@@ -47,6 +56,19 @@ export const getFlashcardSet = async (ID) => {
   const [rows] = (await pool
         .promise()
         .query("SELECT * FROM FlashcardSet WHERE ID in (?)", [ID], function(err, result) {
+        if(err) {
+          console.log(err);
+          } else {
+          console.log(result);
+        }
+      }))
+      return rows;
+}
+
+export const getAllFlashcardSet = async () => {
+  const [rows] = (await pool
+        .promise()
+        .query("SELECT * FROM FlashcardSet", function(err, result) {
         if(err) {
           console.log(err);
           } else {
@@ -102,7 +124,15 @@ export const getFavoritSet = async (IDs) => {
 export const getPopulereSet = async ()=> {
   const [rows] = (await pool
     .promise()
-    .query("SELECT * FROM FlashcardSet ORDER BY Likes",)
+    .query("SELECT * FROM FlashcardSet ORDER BY Likes DESC",)
+    )
+    return rows;
+}
+
+export const getLikeCount = async (ID)=> {
+  const [rows] = (await pool
+    .promise()
+    .query("SELECT Likes FROM FlashcardSet Where ID = (?)",[ID])
     )
     return rows;
 }
@@ -129,6 +159,8 @@ export const addLikeSet = async (ID) => {
     }
   })
 }
+
+
 
 export const addLikeBruker = async (IDs) => {
   await pool
@@ -175,10 +207,10 @@ export const addKommentar = async (Data) => {
   )
 }
 
-export const removeFlashcardSet = async (ID) => {
+export const removeFlashcardSet = async (setID) => {
   await pool
   .promise()
-  .query("DELETE FROM FlashcardSet WHERE ID = ?", [ID], function(err) {
+  .query("DELETE FROM FlashcardSet WHERE ID = (?)", [setID], function(err) {
     if(err) {
       console.log(err);
       }

@@ -21,11 +21,61 @@
   padding: 20px;
   box-sizing: border-box;
   text-align: center;
-  /* Example background (solid color or image URL) */
-  background-color: #dddddd; /* Fallback color */
-  /* background-image: url('path/to/your/image.jpg'); */
+  position: relative;
+}
+/* Different background colors for different sets */
+.set-preview:nth-child(4n+1) {
+  background-color: #ffc0cb;
+}
+
+.set-preview:nth-child(4n+2) {
+  background-color: #b0e0e6;
+}
+
+.set-preview:nth-child(4n+3) {
+  background-color: #ffff99;
+}
+
+.set-preview:nth-child(4n+4) {
+  background-color: #99cc99;
 }
 
 .set-preview h2 {
   margin: 0;
+}
+
+.delete-set-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+  position: absolute;
+  top: -3%;
+  right: -10%;
+  height: 40px;
+  width: 50px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #8b0008;
+  font-weight: 600;
+  font-size:larger
+  
+}
+
+.likeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+  position: absolute;
+  bottom: 5%;
+  left: 2%;
+  height: 30px;
+  width: 60px;
+  border-radius: 10px;
+  background-color: #3890ced2;
+
+}
+
+
+.likeButton:hover{
+  background-color: #5747ce;
 }

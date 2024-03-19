@@ -1,29 +1,38 @@
-import Button from "./Button"
-import UserInterface from "./UserInterface";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, useLocation } from 'react-router-dom';
+import Button from './Button';
+import UserInterface from './UserInterface';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-   const navigate = useNavigate();
+  const goToHome = () => {
+    return navigate('/');
+  };
 
-   const goToHome = () => {
-        return navigate('/');
-    }
+  const pathsWhereHomeButtonIsHidden = ['/'];
 
-return (
-<header className="navbar">
-          <div className="HomeButton">
-            <Button label={"Home"} onClick={goToHome}></Button>
-          </div>
-          <h1 className="webName" >Flashy</h1>
-          <div className="Login">
-            <div className="LoginButton">
-              <UserInterface />
-            </div>
-          </div>
-        </header>
-)
-}
+  const isHomeButtonHidden = pathsWhereHomeButtonIsHidden.includes(
+    location.pathname
+  );
+
+  return (
+    <header className="navbar">
+      <div
+        className="HomeButton"
+        style={{ visibility: isHomeButtonHidden ? 'hidden' : 'visible' }}
+      >
+        <Button label={'Home'} onClick={goToHome}></Button>
+      </div>
+      <h1 className="webName">Flashy</h1>
+
+      <div className="Login">
+        <div className="LoginButton">
+          <UserInterface />
+        </div>
+      </div>
+    </header>
+  );
+};
 
 export default Navbar;
