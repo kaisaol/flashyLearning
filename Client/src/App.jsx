@@ -19,6 +19,7 @@ function App() {
         <Route path="/myset" element={<MySet />} />
         <Route path="/users" element={<UserOverview />} />
         <Route path="/admin" element ={<AdminPage/>} > </Route>
+        <Route paht="/endre" element = {<FlashcardSetCreator/>} ></Route>
       </Routes>
     </div>
   );

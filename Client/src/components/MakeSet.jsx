@@ -11,7 +11,6 @@ const FlashcardSet = () => {
     const [name, setName] = useState("Ingen navn");
     const [description, setDescription] = useState("Tom");
     
-    sessionStorage.setItem('setID', JSON.stringify(25))
     let ID = sessionStorage.getItem('setID');
 
     const flashcardKall = async (setID) => {axios.get('http://localhost:3000/flashcardSet', {
