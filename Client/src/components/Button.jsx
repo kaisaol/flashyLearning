@@ -9,7 +9,6 @@ const Button = ({onClick, label, idName}) => {
             onClick = {onClick}
             id = {idName}
         >
-
             {label}
         </button>
 
