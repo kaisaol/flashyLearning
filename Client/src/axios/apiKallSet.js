@@ -27,12 +27,11 @@ export const apiaddFlashcard = async (row, userID) => {
 }
 
 
-export const apiupdateFlashcard = async (data,SetID) => {
-    return await axios.get('http://localhost:3000/update', {
-        params: {
+export const apiupdateFlashcard = async (row,SetID) => {
+    return await axios
+    .post('http://localhost:3000/flashcardSet/update', {
         SetID: SetID,
-        data : data
-        }
+        row : row
     }).then((data) => {
         console.log(data);
         return data.data;

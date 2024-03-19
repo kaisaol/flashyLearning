@@ -22,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<FrontPage />} />
         <Route path="/myset" element={<MySet/>} />
+        <Route path="/opprettendre" element={<FlashcardSetCreator/>} />
       </Routes>
     </div>
   );
