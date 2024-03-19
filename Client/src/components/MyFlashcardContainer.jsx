@@ -5,7 +5,7 @@ import Button from '../components/Button.jsx';
 import FlashcardSet from '../components/FlashcardSet.jsx';
 import FlashcardSetsOverview from '../components/FlashcardSetsOverview.jsx';
 
-function MyFlashcardContainer({oppdaterSetValgt, getData}) {
+function MyFlashcardContainer({ oppdaterSetValgt, getData, onDelete }) {
   const [currentSetId, setCurrentSetId] = useState(null);
 
   const handleSetSelected = (id) => {
@@ -13,7 +13,7 @@ function MyFlashcardContainer({oppdaterSetValgt, getData}) {
   };
 
   useEffect(() => {
-    if(currentSetId) {
+    if (currentSetId) {
       oppdaterSetValgt(true);
     } else {
       oppdaterSetValgt(false);
@@ -41,16 +41,13 @@ function MyFlashcardContainer({oppdaterSetValgt, getData}) {
         },
       ],
     },
-    
-    
   ];
 
-  const flashcardSetsData = getData ? getData : mockData;
-  const currentSet = flashcardSetsData.find((set) => set.ID === currentSetId);
-
+  const flashcardSets = (getData ? getData : mockData)
+  const currentSet = flashcardSets.find((set) => set.ID === currentSetId);
 
   return (
-    <div className='flashcardContainer'>
+    <div className="flashcardContainer">
       {currentSetId && (
         <Button
           onClick={() => handleSetSelected(null)}
@@ -61,10 +58,11 @@ function MyFlashcardContainer({oppdaterSetValgt, getData}) {
       {currentSetId ? (
         <FlashcardSet set={currentSet} />
       ) : (
-          <FlashcardSetsOverview
-            sets={flashcardSetsData}
-            onSetSelected={handleSetSelected}
-          />
+        <FlashcardSetsOverview
+          sets={flashcardSets}
+          onSetSelected={handleSetSelected}
+          onDelete={onDelete}
+        />
       )}
     </div>
   );

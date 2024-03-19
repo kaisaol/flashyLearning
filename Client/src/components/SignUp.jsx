@@ -3,7 +3,7 @@ import Button from './Button';
 import { useState } from 'react';
 import { registrer } from '../axios/bruker';
 
-const SignUp = ({handleUserChange}) => {
+const SignUp = ({ handleUserChange }) => {
   const [username, setUserName] = useState('');
   const [password, setPass] = useState('');
   const [feedbackText, setFeedbackText] = useState('');
@@ -15,17 +15,17 @@ const SignUp = ({handleUserChange}) => {
   const userChange = (event) => {
     setUserName(event.target.value);
   };
-  
+
   const passChange = (event) => {
     setPass(event.target.value);
   };
-  
+
   const handleSignUp = async () => {
-    if(username === '' || password === ''){
+    if (username === '' || password === '') {
       handleFeedbackChange('Fyll inn brukernavn og passord');
       return;
     }
-    
+
     const bruker = await registrer(username, password);
     if (bruker?.ID === undefined) {
       handleFeedbackChange('Brukeren eksisterer allerede');
@@ -41,22 +41,20 @@ const SignUp = ({handleUserChange}) => {
     <div className="form">
       <form>
         <h3 className="headerSignUp">Sign Up!</h3>
-        <div className="input">
-          <label htmlFor="userName">Brukernavn:</label>
-          <input
-            type="text"
-            id={'userName'}
-            onChange={userChange}
-            value={username}
-          />
-          <label htmlFor="password">Passord:</label>
-          <input
-            type="text"
-            id={'password'}
-            onChange={passChange}
-            value={password}
-          />
-        </div>
+        <label htmlFor="userName">Brukernavn:</label>
+        <input
+          type="text"
+          id={'userName'}
+          onChange={userChange}
+          value={username}
+        />
+        <label htmlFor="password">Passord:</label>
+        <input
+          type="text"
+          id={'password'}
+          onChange={passChange}
+          value={password}
+        />
       </form>
       <Button onClick={handleSignUp} label={'Sign Up'} id={'SignUpButton'} />
       <div className="feedback">{feedbackText}</div>

@@ -58,9 +58,7 @@ export const getMineSet = async (brukerID) => {
 export const getAllSets = async () => {
   return await axios
     .get('http://localhost:3000/bruker/allSets', {
-      params: {
-        
-      },
+      params: {},
     })
     .then(async (data) => {
       return await data.data;
@@ -73,9 +71,7 @@ export const getAllSets = async () => {
 export const getPopularSets = async () => {
   return await axios
     .get('http://localhost:3000/bruker/popularSets', {
-      params: {
-        
-      },
+      params: {},
     })
     .then(async (data) => {
       return await data.data;

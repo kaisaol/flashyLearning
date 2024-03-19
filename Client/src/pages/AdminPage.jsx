@@ -4,10 +4,8 @@ import MyFlashcardContainer from '../components/MyFlashcardContainer';
 import '../styles/AdminPage.css';
 import axios from 'axios';
 
-
 const AdminPage = () => {
-
-    const [erSetValgt, setErSetValgt] = useState(false);
+  const [erSetValgt, setErSetValgt] = useState(false);
 
   const [isLoading, setLoading] = useState(true);
   const [sets, setSets] = useState([]);
@@ -17,34 +15,33 @@ const AdminPage = () => {
 
   useEffect(() => {
     axios
-    .get('http://localhost:3000/bruker/popularSets')
-    .then(async (data) => {
-      setSets(data.data)
-      setLoading(false)
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }, [])
+      .get('http://localhost:3000/bruker/popularSets')
+      .then(async (data) => {
+        setSets(data.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-  if(isLoading){
-    return <div> Loading...</div>
+  if (isLoading) {
+    return <div> Loading...</div>;
   }
 
-
-
-
-return (
+  return (
     <>
-    <div><h1>Administrer sets</h1></div>
-    <div className='adminpp'>
-        <MyFlashcardContainer oppdaterSetValgt={oppdaterSetValgt} getData={sets} />
-    </div>
+      <div>
+        <h1>Administrer sets</h1>
+      </div>
+      <div className="adminpp">
+        <MyFlashcardContainer
+          oppdaterSetValgt={oppdaterSetValgt}
+          getData={sets}
+        />
+      </div>
     </>
-)
+  );
+};
 
-
-
-}
-
-export default AdminPage
+export default AdminPage;
