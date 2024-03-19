@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import FlashcardContainer from './FlashcardContainer';
+import MyFlashcardContainer from '../components/MyFlashcardContainer';
 import '../styles/MySets.css';
 import axios from 'axios';
 
@@ -42,7 +42,7 @@ const MySet = () => {
       {bruker ? (
         <div>
           <h1 className='mySetsHeader' style={{ display: display }}> My sets </h1>
-          <FlashcardContainer oppdaterSetValgt={oppdaterSetValgt} getData={sets} />
+          <MyFlashcardContainer oppdaterSetValgt={oppdaterSetValgt} getData={sets} />
         </div>
       ) : (
         'Logg inn for å se dine sett'

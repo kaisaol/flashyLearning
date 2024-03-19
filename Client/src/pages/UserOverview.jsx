@@ -21,8 +21,8 @@ const UserOverview = () => {
       });
   }, []);
 
-  if(bruker?.Admin !== 1){
-    return <div>Not authorized</div>
+  if (bruker?.Admin !== 1) {
+    return <div>Not authorized</div>;
   }
 
   if (isLoading) {
@@ -48,7 +48,6 @@ const UserOverview = () => {
   };
 
   const deleteUser = (ID) => {
-    console.log(ID);
     const svar = slettBruker(ID);
     if (svar) {
       setBrukere(brukere.filter((bruker) => bruker.ID !== ID));
@@ -58,7 +57,7 @@ const UserOverview = () => {
   return (
     <>
       <div id="userContainer">
-      <h1>Administrate Users </h1>
+        <h1>Administrate Users </h1>
         <div className="user">
           <h3>Username</h3>
           <h3>Admin</h3>

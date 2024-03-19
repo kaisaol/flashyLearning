@@ -51,7 +51,10 @@
 }
 
 .welMessage {
-  padding: 45px;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  padding-right: 10%;
+  padding-left: 10%;
   
 }
 

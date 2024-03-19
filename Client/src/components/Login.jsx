@@ -28,7 +28,6 @@ const Login = ({ handleUserChange }) => {
       return;
     }
     if (bruker.Brukernavn === undefined) {
-      console.log('Feil brukernavn eller passord');
       handleFeedbackChange('Feil brukernavn eller passord');
       return;
     }
