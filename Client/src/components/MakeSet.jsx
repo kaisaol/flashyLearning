@@ -1,27 +1,46 @@
-import { useState } from 'react';
-import {apiFlashcardKall,
-        apiaddFlashcard,
-        apiupdateFlashcard
-} from '../axios/apiKallSet.js';
+import { useEffect, useState } from 'react';
+import {apiaddFlashcard,
+        apiupdateFlashcard} from '../axios/apiKallSet.js';
 import Button from './Button.jsx';
+import axios from 'axios';
+
 
 const FlashcardSet = () => {
     const [flashcardtempQ, setTempQ] = useState('');
     const [flashcardtempA, setTempA] = useState('');
     const [name, setName] = useState("Ingen navn");
     const [description, setDescription] = useState("Tom");
-
-    let doneSet = sessionStorage.getItem('tempCards')
     
+    let ID = sessionStorage.getItem('setID');
+
+    const flashcardKall = async (setID) => {axios.get('http://localhost:3000/flashcardSet', {
+            params: {
+            ID: setID
+            }
+        }).then((data) => {
+            sessionStorage.setItem('tempCards',JSON.stringify(JSON.parse(data.data[0].Data)))
+            setName(data.data[0].Navn)
+            setDescription(data.data[0].Beskrivelse)
+        }).catch((error) => {
+            console.log(error);
+        })};
+        useEffect(() => {
+            if(!ID){
+                console.log("Ingen lagret ID")
+            } else {
+            flashcardKall(ID)}}, [ID]);
+
+    const [doneSet, setDoneSet] = useState(JSON.parse(sessionStorage.getItem('tempCards')))
+
+
     if(!doneSet){
         sessionStorage.setItem('tempCards', JSON.stringify([]));
-        doneSet = sessionStorage.getItem('tempCards')
+        setDoneSet(JSON.parse(sessionStorage.getItem('tempCards')));
     }
 
     
     function writeTempQ(e) {
         setTempQ(e.target.value);
-        console.log(flashcardtempQ)
     }
 
     function writeTempA(e) {
@@ -36,31 +55,49 @@ const FlashcardSet = () => {
         setDescription(e.target.value)
     }
 
-    function addTempToObject() {
-        var object = {term: flashcardtempQ , definition: flashcardtempA};
-        const cards = JSON.parse(sessionStorage.getItem('tempCards'))
-        console.log(cards)
-        cards.push(object)
-        doneSet = cards
-        sessionStorage.setItem('tempCards', JSON.stringify(doneSet))
-        console.log(doneSet);
-        setTempA("")
-        setTempQ("")
-        console.log(doneSet);
+    function deleteElement(e) {
+        setDoneSet(JSON.parse(sessionStorage.getItem('tempCards')));
+        let index = e
+        doneSet.splice(index,1)
+        sessionStorage.setItem('tempCards',JSON.stringify(doneSet))
+        console.log(doneSet)
+        setTempA("");
+        setTempQ("");
     }
 
-    function addToDatabase(ID) {
-        doneSet = sessionStorage.getItem('tempCards')
-        const delivery = [name,description,doneSet, '[]', 0];
-        console.log(delivery);
-        const user = sessionStorage.getItem('bruker')
-        apiaddFlashcard(delivery,user);
-        sessionStorage.setItem('tempCards', JSON.stringify([]));
+    
+
+
+    function addTempToObject() {
+        let object = [{term: flashcardtempQ , definition: flashcardtempA}];
+        console.log(object)
+        let cards = JSON.parse(sessionStorage.getItem('tempCards'));
+        cards = cards.concat(object)
+        console.log(cards)
+        setDoneSet(cards);
+        sessionStorage.setItem('tempCards', JSON.stringify(doneSet));
+        setTempA("");
+        setTempQ("");
         
+        }
+
+    function addToDatabase() {
+        setDoneSet(JSON.parse(sessionStorage.getItem('tempCards')));
+        const delivery = [name,description,doneSet, '[]', 0];
+        const user = sessionStorage.getItem('bruker');
+        if(!ID){
+            apiaddFlashcard(delivery,user);
+        } else {
+            apiupdateFlashcard(delivery,ID);
+        }
+        sessionStorage.setItem('tempCards', JSON.stringify([]));
+        setDoneSet(JSON.parse(sessionStorage.getItem('tempCards')));
     }
+
+    
 
     return(
-        <div className='form'>
+        <div className='form' >
             <form>
             <h3 className='headerMakeSet'>Opprette et flashcard set</h3>
                 <label htmlFor='Name'> Navn</label>
@@ -103,7 +140,13 @@ const FlashcardSet = () => {
                 label="Opprett set"
                 idName="Done"
                 />
-            <div className='thisFar'>{doneSet.toString()}</div>
+            <h1>Delete current </h1>
+            <div id='thisFar'>
+                {
+                    doneSet.map(card => 
+                        <button  key = {doneSet.indexOf(card)} onClick={() => deleteElement(doneSet.indexOf(card))}>{card.term + " : " + card.definition}</button>)
+                }
+            </div>
         </div>
     );
 };

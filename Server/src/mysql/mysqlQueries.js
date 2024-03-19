@@ -238,10 +238,30 @@ export const removeKommentar = async (ID) => {
 }
 
 export const updateFlashcardSet = async (ID,data) => {
-  let query = "UPDATE FlashcardSet Set Data = " + data + " Where ID = (?)"
+  let queryNavn = "UPDATE FlashcardSet Set Navn = (?) WHERE ID = " + ID;
+  let queryBeskrivelse = "UPDATE FlashcardSet Set Beskrivelse = (?) WHERE ID = " + ID;
+  let queryData ="UPDATE FlashcardSet Set Data = (?) WHERE ID = " + ID;
   await pool
   .promise()
-  .query(query, [ID], function(err) {
+  .query(queryNavn, [data[0]], function(err) {
+    if(err) {
+      console.log(err);
+      } else {
+        return "Accepted"
+      }
+  })
+  await pool
+  .promise()
+  .query(queryBeskrivelse, [data[1]], function(err) {
+    if(err) {
+      console.log(err);
+      } else {
+        return "Accepted"
+      }
+  })
+  await pool
+  .promise()
+  .query(queryData, [data[2]], function(err) {
     if(err) {
       console.log(err);
       } else {
