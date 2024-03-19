@@ -35,12 +35,11 @@ const UserMeny = ({handleUserChange}) => {
         <Button label={'Logout'} onClick={logout} />
         <Button label={'Mine Set'} onClick={goToMySet}></Button>
         <div style={{ display: display }}>
-          <Button label= {'Administrer'} onClick={goToAdminPage}></Button>
+          <Button label= {'Modeller kort'} onClick={goToAdminPage}></Button>
         </div>
         </div>
-        <Button label={'Administrer '} onClick={goToAdminUsers}></Button>
+        <Button label={'Brukeroversikt'} onClick={goToAdminUsers}></Button>
       </>
-    );
-}
+    );}
 
 export default UserMeny;

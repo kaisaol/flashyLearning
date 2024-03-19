@@ -23,7 +23,7 @@ const FlashcardSetOverview = ({ sets, onSetSelected }) => {
   const location = useLocation();
 
   let showDelete = false;
-  if (user?.Admin == 1){
+  if (user?.Admin == 1 && location.pathname === "/admin"){
     showDelete = true;
   }
   if (location.pathname === "/myset" && user) {
@@ -50,7 +50,7 @@ const FlashcardSetOverview = ({ sets, onSetSelected }) => {
           onClick={() => onSetSelected(set.ID)}
           >
           <h2>{set.Navn}</h2>
-          <button style = {{display:display}} onClick={(e) => handleDelete(set.ID, e)} className="delete-set-btn">x</button>
+          <button style = {{display:display}} onClick={(e) => handleDelete(set.ID, e)} className="delete-set-btn">X</button>
           <p>Likes: {set.Likes} </p>
           </div>
           <button className = "likeButton" onClick={() => handleLike(set.ID)} > Like </button>
