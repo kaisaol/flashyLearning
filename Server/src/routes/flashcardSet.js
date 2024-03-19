@@ -12,8 +12,8 @@ export const router = express.Router();
 
 router.get("/", async (req, res) => {
   const setID = req.query.ID;
-  const set = await getFlashcardSet(setID);
-  res.send(set);
+  const svar = await getFlashcardSet(setID);
+  res.send(svar);
 });
 
 router.post("/add", async (req, res) => {
