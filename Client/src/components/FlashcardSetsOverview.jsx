@@ -7,7 +7,6 @@ import { deleteFlashcard, likeFlashcard } from '../axios/apiKallSet';
 const FlashcardSetOverview = ({ sets, onSetSelected }) => {
 
 
-  console.log(sets)
 
   const handleDelete = (setId, e) => {
     e.stopPropagation();
