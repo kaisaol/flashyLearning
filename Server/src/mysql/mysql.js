@@ -1,4 +1,4 @@
-import { createPool } from 'mysql2';
+import { createPool } from "mysql2";
 
 const pool = createPool({
   host: "mysql.stud.ntnu.no",

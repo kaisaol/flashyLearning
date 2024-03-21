@@ -1,4 +1,4 @@
-import pool from './mysql.js';
+import pool from "./mysql.js";
 
 /**
  *
@@ -14,24 +14,24 @@ export const getCountry = async (id) => {
 */
 
 export const getBruker = async (ID) => {
-  const [rows] = (await pool
-        .promise()
-        .query("SELECT * FROM Bruker WHERE ID in (?)", [ID], function(err, result) {
-        if(err) {
-          console.log(err);
-          } else {
-          console.log(result);
-        }
-      }))
-      return rows;
-}
-
-export const getAlleBrukere = async () => {
-  const [rows] = (await pool
+  const [rows] = await pool
     .promise()
     .query(
-      "SELECT * FROM Bruker",)
-      );
+      "SELECT * FROM Bruker WHERE ID in (?)",
+      [ID],
+      function (err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(result);
+        }
+      },
+    );
+  return rows;
+};
+
+export const getAlleBrukere = async () => {
+  const [rows] = await pool.promise().query("SELECT * FROM Bruker");
   return rows;
 };
 
@@ -47,49 +47,57 @@ export const getBrukerByName = async (name) => {
         } else {
           console.log(result);
         }
-      }
+      },
     );
   return rows;
 };
 
 export const getFlashcardSet = async (ID) => {
-  const [rows] = (await pool
-        .promise()
-        .query("SELECT * FROM FlashcardSet WHERE ID in (?)", [ID], function(err, result) {
-        if(err) {
+  const [rows] = await pool
+    .promise()
+    .query(
+      "SELECT * FROM FlashcardSet WHERE ID in (?)",
+      [ID],
+      function (err, result) {
+        if (err) {
           console.log(err);
-          } else {
+        } else {
           console.log(result);
         }
-      }))
-      return rows;
-}
+      },
+    );
+  return rows;
+};
 
 export const getAllFlashcardSet = async () => {
-  const [rows] = (await pool
-        .promise()
-        .query("SELECT * FROM FlashcardSet", function(err, result) {
-        if(err) {
-          console.log(err);
-          } else {
-          console.log(result);
-        }
-      }))
-      return rows;
-}
+  const [rows] = await pool
+    .promise()
+    .query("SELECT * FROM FlashcardSet", function (err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+      }
+    });
+  return rows;
+};
 
 export const getKommentar = async (IDs) => {
-  const [rows] = (await pool
-        .promise()
-        .query("SELECT * FROM Kommentar WHERE ID in (?)", [IDs], function(err, result) {
-        if(err) {
+  const [rows] = await pool
+    .promise()
+    .query(
+      "SELECT * FROM Kommentar WHERE ID in (?)",
+      [IDs],
+      function (err, result) {
+        if (err) {
           console.log(err);
-          } else {
+        } else {
           console.log(result);
         }
-      }))
-      return rows;
-}
+      },
+    );
+  return rows;
+};
 
 export const getBrukerSet = async (ID) => {
   const [rows] = await pool
@@ -103,180 +111,169 @@ export const getBrukerSet = async (ID) => {
         } else {
           console.log(result);
         }
-      }
+      },
     );
   return rows;
 };
 
 export const getFavoritSet = async (IDs) => {
-  const [rows] = (await pool
-        .promise()
-        .query("SELECT * FROM FavorittSet WHERE BrukerID in (?)", [IDs], function(err, result) {
-        if(err) {
+  const [rows] = await pool
+    .promise()
+    .query(
+      "SELECT * FROM FavorittSet WHERE BrukerID in (?)",
+      [IDs],
+      function (err, result) {
+        if (err) {
           console.log(err);
-          } else {
+        } else {
           console.log(result);
         }
-      }))
-      return rows;
-}
+      },
+    );
+  return rows;
+};
 
-export const getPopulereSet = async ()=> {
-  const [rows] = (await pool
+export const getPopulereSet = async () => {
+  const [rows] = await pool
     .promise()
-    .query("SELECT * FROM FlashcardSet ORDER BY Likes DESC",)
-    )
-    return rows;
-}
+    .query("SELECT * FROM FlashcardSet ORDER BY Likes DESC");
+  return rows;
+};
 
-export const getLikeCount = async (ID)=> {
-  const [rows] = (await pool
+export const getLikeCount = async (ID) => {
+  const [rows] = await pool
     .promise()
-    .query("SELECT Likes FROM FlashcardSet Where ID = (?)",[ID])
-    )
-    return rows;
-}
-
-
+    .query("SELECT Likes FROM FlashcardSet Where ID = (?)", [ID]);
+  return rows;
+};
 
 export const addBruker = async (Data) => {
   await pool
-  .promise()
-  .query("INSERT INTO Bruker(Brukernavn,Passord,Admin) VALUES (?)", [Data], function(err) {
-    if(err) {
-      console.log(err);
-      }
-    }
-  )
-}
+    .promise()
+    .query(
+      "INSERT INTO Bruker(Brukernavn,Passord,Admin) VALUES (?)",
+      [Data],
+      function (err) {
+        if (err) {
+          console.log(err);
+        }
+      },
+    );
+};
 
 export const addLikeSet = async (ID) => {
   await pool
-  .promise()
-  .query("UPDATE FlashcardSet Set Likes = Likes + 1 WHERE ID = (?)" , [ID], function(err){
-    if(err) {
-      console.log(err);
-    }
-  })
-}
-
-
+    .promise()
+    .query(
+      "UPDATE FlashcardSet Set Likes = Likes + 1 WHERE ID = (?)",
+      [ID],
+      function (err) {
+        if (err) {
+          console.log(err);
+        }
+      },
+    );
+};
 
 export const addLikeBruker = async (IDs) => {
-  await pool
-  .promise()
-  .query("INSERT INTO FavorittSet VALUES (?)", [IDs])
-}
+  await pool.promise().query("INSERT INTO FavorittSet VALUES (?)", [IDs]);
+};
 
-export const addFlashcardSet = async (Data,ID) => {
+export const addFlashcardSet = async (Data, ID) => {
+  ID = JSON.parse(ID);
   await pool
-  .promise()
-  .query("INSERT INTO FlashcardSet(Navn,Beskrivelse,Data,Tags,Likes) VALUES (?)", [Data], function(err) {
-    if(err) {
-      console.log(err);
-      } 
-    }
-  )
-  const [flash] = (await pool
     .promise()
-    .query("SELECT ID FROM FlashcardSet WHERE Navn = ? ORDER BY ID DESC",[Data[0]], function(err) {
-    if(err) {
-    console.log(err);
-    }
-    }
-  ))
-  console.log(flash[0].ID)
-  pool.query("INSERT INTO MineSet VALUES (?)", [[ID,flash[0].ID]], function(err){
-    if(err) {
-      console.log(err);
-    } else {
-      return "Acepted"
+    .query(
+      "INSERT INTO FlashcardSet(Navn,Beskrivelse,Data,Tags,Likes) VALUES (?)",
+      [Data],
+      function (err) {
+        if (err) {
+          console.log(err);
+        }
+      },
+    );
+  const [flash] = await pool
+    .promise()
+    .query(
+      "SELECT ID FROM FlashcardSet WHERE Navn = ? ORDER BY ID DESC",
+      [Data[0]],
+      function (err) {
+        if (err) {
+          console.log(err);
+        }
+      },
+    );
+  console.log("bruker id og flash id");
+  console.log(ID, flash[0]);
+  pool.query(
+    "INSERT INTO MineSet VALUES (?)",
+    [[JSON.parse(ID.ID), flash[0].ID]],
+    function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        return "Acepted";
       }
-    }
-  )
-}
+    },
+  );
+};
 
 export const addKommentar = async (Data) => {
   await pool
-  .promise()
-  .query("INSERT INTO Kommnetar VALUES (?)", [Data], function(err) {
-    if(err) {
-      console.log(err);
+    .promise()
+    .query("INSERT INTO Kommnetar VALUES (?)", [Data], function (err) {
+      if (err) {
+        console.log(err);
       }
-    }
-  )
-}
+    });
+};
 
 export const removeFlashcardSet = async (setID) => {
   await pool
-  .promise()
-  .query("DELETE FROM FlashcardSet WHERE ID = (?)", [setID], function(err) {
-    if(err) {
-      console.log(err);
+    .promise()
+    .query("DELETE FROM FlashcardSet WHERE ID = (?)", [setID], function (err) {
+      if (err) {
+        console.log(err);
       }
-  })
-}
+    });
+};
 
 export const removeBruker = async (ID) => {
   await pool
-  .promise()
-  .query("DELETE FROM Bruker WHERE ID = (?)", [ID], function(err){
-    if(err) {
-      console.log(err);
+    .promise()
+    .query("DELETE FROM Bruker WHERE ID = (?)", [ID], function (err) {
+      if (err) {
+        console.log(err);
       }
-  })
-}
+    });
+};
 
 export const removeKommentar = async (ID) => {
   await pool
-  .promise()
-  .query("DELETE FROM Kommentar WHERE ID = (?)", [ID], function(err) {
-    if(err) {
-      console.log(err);
+    .promise()
+    .query("DELETE FROM Kommentar WHERE ID = (?)", [ID], function (err) {
+      if (err) {
+        console.log(err);
       }
-  })
-}
+    });
+};
 
-export const updateFlashcardSet = async (ID,data) => {
-  let queryNavn = "UPDATE FlashcardSet Set Navn = (?) WHERE ID = " + ID;
-  let queryBeskrivelse = "UPDATE FlashcardSet Set Beskrivelse = (?) WHERE ID = " + ID;
-  let queryData ="UPDATE FlashcardSet Set Data = (?) WHERE ID = " + ID;
-  await pool
-  .promise()
-  .query(queryNavn, [data[0]], function(err) {
-    if(err) {
+export const updateFlashcardSet = async (ID, data) => {
+  let query = "UPDATE FlashcardSet Set Data = '" + data + "' Where ID = (?)";
+  await pool.promise().query(query, [ID], function (err) {
+    if (err) {
       console.log(err);
-      } else {
-        return "Accepted"
-      }
-  })
-  await pool
-  .promise()
-  .query(queryBeskrivelse, [data[1]], function(err) {
-    if(err) {
-      console.log(err);
-      } else {
-        return "Accepted"
-      }
-  })
-  await pool
-  .promise()
-  .query(queryData, [data[2]], function(err) {
-    if(err) {
-      console.log(err);
-      } else {
-        return "Accepted"
-      }
-  })
-}
+    } else {
+      return "Accepted";
+    }
+  });
+};
 
-export const updateAdmin = async (ID,data) => {
-  let query = "UPDATE Bruker Set Admin = " + data + " Where ID = (?)"
-  await pool
-  .promise()
-  .query(query, [ID], function(err) {
-    if(err) {
+export const updateAdmin = async (ID, data) => {
+  let query = "UPDATE Bruker Set Admin = " + data + " Where ID = (?)";
+  await pool.promise().query(query, [ID], function (err) {
+    if (err) {
       console.log(err);
-      }
-  })
-}
+    }
+  });
+};

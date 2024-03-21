@@ -75,7 +75,25 @@
 
 }
 
+.editButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 5%;
+  right: 2%;
+  height: 30px;
+  width: 60px;
+  border-radius: 10px;
+  background-color: #3890ced2;
+
+}
+
 
 .likeButton:hover{
+  background-color: #5747ce;
+}
+
+.editButton:hover {
   background-color: #5747ce;
 }

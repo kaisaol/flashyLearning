@@ -1,0 +1,35 @@
+.form {
+  color: black;
+}
+
+#makeForm {
+  padding-left: 10%;
+  padding-top: 45px;
+  width: 75%;
+}
+
+.form > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form > form > input {
+  padding: 4px;
+  background-color: white;
+  color: black;
+}
+
+.form > form > textarea {
+  padding: 4px;
+  background-color: white;
+  color: black;
+  resize: none;
+  height: 4rem;
+}
+
+.formButtonContainer {
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

@@ -8,7 +8,7 @@ import {
   getAlleBrukere,
   updateAdmin,
   removeBruker,
-  getPopulereSet
+  getPopulereSet,
 } from "../mysql/mysqlQueries.js";
 
 export const router = express.Router();

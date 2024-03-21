@@ -31,7 +31,7 @@ const FrontPage = () => {
   const display = erSetValgt ? 'none' : 'block';
 
   return (
-    <div className='frontpageContainer'>
+    <div className="frontpageContainer">
       <div className="frontpageHeader">
         <div className="welMessage" style={{ display: display }}>
           <h2 className="welHeader">
