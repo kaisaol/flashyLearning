@@ -4,7 +4,7 @@ import Flashcard from './Flashcard';
 import '../styles/FlashcardSet.css';
 
 const FlashcardSet = ({ set }) => {
-  const cards = JSON.parse(set.Data);
+  const cards = set.Data;
   const [flashcardsData, setFlashcardsData] = useState(
     cards.map((card) => ({ ...card, isHard: false }))
   );

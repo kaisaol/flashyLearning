@@ -41,7 +41,7 @@ const UserMeny = ({ handleUserChange }) => {
         <Button label={'Mine Set'} onClick={goToMySet}></Button>
         <Button label={'Opprett Set'} onClick={goToCreateSet}></Button>
         <div style={{ display: display }}>
-          <Button label={'Administrer kort'} onClick={goToAdminPage}></Button>
+          <Button label={'Administrer set'} onClick={goToAdminPage}></Button>
         </div>
         <div style={{ display: display }}>
           <Button label={'Brukeroversikt'} onClick={goToAdminUsers}></Button>

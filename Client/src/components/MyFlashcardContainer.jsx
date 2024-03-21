@@ -20,12 +20,30 @@ function MyFlashcardContainer({ oppdaterSetValgt, getData, onDelete }) {
     }
   }, [currentSetId, oppdaterSetValgt]);
 
+  const shuffleArray = (array) => {
+    let currentIndex = array.length,
+      randomIndex;
+
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  };
+
+
   const mockData = [
     {
       id: 'set1',
       title: 'Geografi',
       likes: 0,
-      cards: [
+      Data: JSON.stringify([
         { term: 'Hva er lengste elv i Norge?', definition: 'Glomma' },
         {
           term: 'Hva er det høyeste fjellet i verden?',
@@ -39,12 +57,14 @@ function MyFlashcardContainer({ oppdaterSetValgt, getData, onDelete }) {
           term: 'Hvilket land har verdens lengste kystlinje?',
           definition: 'Canada',
         },
-      ],
+      ]),
     },
   ];
 
   const flashcardSets = (getData ? getData : mockData)
   const currentSet = flashcardSets.find((set) => set.ID === currentSetId);
+  const shuffledCards = currentSet ? shuffleArray([...JSON.parse(currentSet.Data)]) : [];
+
 
   return (
     <div className="flashcardContainer">
@@ -56,7 +76,7 @@ function MyFlashcardContainer({ oppdaterSetValgt, getData, onDelete }) {
         />
       )}
       {currentSetId ? (
-        <FlashcardSet set={currentSet} />
+        <FlashcardSet set={{ ...currentSet, Data: shuffledCards }} />
       ) : (
         <FlashcardSetsOverview
           sets={flashcardSets}
